@@ -1,167 +1,134 @@
 # Omni Hemsida
 
-静态网站模板 / 小型公司网站示例  
-仓库名: `omni_hemsida`
+一个简单、轻量的静态网站模板（HTML / CSS / JS），适合作为公司或产品展示页的起点。该仓库包含多个页面版本与样式文件，资源结构清晰，便于本地预览、修改与部署到任意静态托管服务。
 
 ---
 
-## 项目概述
+## 快速概览
 
-这是一个基于静态 HTML、CSS 和少量 JavaScript 的网站模板，包含多个页面版本与样式文件，适合作为小型公司或产品展示页的起点。项目没有构建步骤或后端依赖，易于本地预览和部署到任何静态托管服务（GitHub Pages、Netlify、Vercel 等）。
-
-主要特点：
-- 纯静态文件（HTML/CSS/JS）
-- 资源组织良好（`css/`, `js/`, `img/`）
-- 包含多套样式（`style_v2.css` 等）与页面变体（`index_V2.html`）
+- 技术栈：纯静态 HTML、CSS、少量 JavaScript
+- 目标：演示页 / 信息展示 / 小型静态站点
+- 无构建步骤 —— 可直接打开或通过简单静态服务器预览
 
 ---
 
-## 目录结构（重要文件说明）
+## 目录结构（重要文件）
 
-- `index.html`  
-  站点主页面（版本 1）。
-
-- `index_V2.html`  
-  站点主页面的另一个版本（版本 2），用于替代或进行 A/B 测试。
-
-- `OmniPOSTech-Hemsida_Copy.html`  
-  页面副本／历史版本，保留用于参考。
-
-- `style.css`  
-  根目录下的样式文件（可能用于全局或历史用途）。
-
-- `css/`  
-  存放样式的文件夹：
+- `index.html` — 主站点页面（版本 1）
+- `index_V2.html` — 主页面的另一个版本（版本 2）
+- `OmniPOSTech-Hemsida_Copy.html` — 历史或备份副本
+- `style.css` — 根目录样式文件（历史或全局用途）
+- `css/` — 样式文件夹
   - `css/style.css`
-  - `css/style_v2.css` —— 推荐的第二版样式
-
+  - `css/style_v2.css`（推荐使用的新版样式）
 - `js/`
-  - `js/script.js` —— 包含页面交互逻辑（滚动、导航、简单动画等）
-
-- `img/`  
-  图片与 logo 资源：
-  - `img/logos/`：包含 PNG、SVG 和 Favicons 子目录
-  - `img/scene/`：场景图、示例图片等
-  - 其他图像资源
-
-- `.gitignore`  
-  Git 忽略规则
-
-- `README.md`  
-  本文件
+  - `js/script.js` — 页面交互脚本（滚动、导航等）
+- `img/` — 图片与 logo 资源
+  - `img/logos/` — LOGO 与 favicon
+  - `img/scene/` — 演示图片
+- `.gitignore` — Git 忽略规则
+- `README.md` — 本文件
 
 ---
 
-## 本地预览
+## 本地预览（推荐）
 
-该项目是静态网站，可以直接在浏览器中打开 `index.html`，或者通过简单的静态服务器来预览以支持路径与 fetch 等功能。
+方法一：直接用浏览器打开（快速）
+- 在文件管理器中双击 `index.html`，或在终端运行：
+  open index.html
 
-推荐方法：
+方法二：使用 Python 内置静态服务器（推荐，支持相对路径）
+1. 进入仓库根目录：
+   cd /path/to/omni_hemsida
+2. 启动服务器：
+   python3 -m http.server 8000
+3. 打开浏览器访问：
+   http://localhost:8000/index.html
+4. 停止服务器：Ctrl+C
 
-1. 直接在 macOS 上打开（简单快速）
-   - 在 Finder 中双击 `index.html`，或在终端中运行：
-     open index.html
-
-2. 使用 Python 简易服务器（推荐）
-   - 在仓库根目录运行：
-     python3 -m http.server 8000
-   - 打开浏览器并访问：
-     http://localhost:8000/index.html
-   - 停止服务器：按 Ctrl+C
-
-3. 使用 npm 的静态服务器（如有 node）
-   - 使用 npx：
-     npx serve .
-   - 或安装全局 `serve`：
-     npm i -g serve
-     serve
+方法三：使用 Node 工具（若有 Node.js）
+- 一次性运行（无需全局安装）：
+  npx serve .
+- 或安装并运行 serve：
+  npm i -g serve
+  serve
 
 ---
 
-## 编辑与自定义
+## 如何切换页面版本
 
-- 修改页面内容：编辑 `index.html` 或 `index_V2.html`，根据需要修改文本、链接、meta 信息等。
-- 修改样式：
-  - 推荐编辑 `css/style_v2.css`（若使用 V2），或者 `css/style.css` / 根目录 `style.css`。
-  - 若需要添加响应式样式或新组件，请在 css 文件中添加相应选择器和规则。
-- 修改脚本：`js/script.js`，包含页面的交互逻辑。更复杂的交互可以在该文件中扩展。
-- 图片与 Logo：
-  - 将图片放入 `img/` 对应子目录，更新 HTML 中的 src 路径。
-  - Favicons 在 `img/logos/Favicons/`，如果替换请保持多种尺寸文件以兼容不同设备。
-- 字体与图标：如果需要自定义字体，添加字体文件并在 CSS 中通过 @font-face 引入，或使用 Google Fonts CDN。
+- 切换到 V2：在浏览器中直接打开 `index_V2.html`，或将 `index_V2.html` 的内容复制/重命名为 `index.html` 以作为默认入口。
+- 若部署到 GitHub Pages，可将 `index_V2.html` 内容替换 `index.html` 后 push。
 
-注意：在修改时请保持相对路径正确（例如 `css/` 与 `js/` 的引用）。
+---
+
+## 自定义与开发要点
+
+- 内容修改：直接编辑 HTML 文件（`index.html` / `index_V2.html`）中的文本、链接和 meta 信息。
+- 样式修改：编辑 `css/style_v2.css`（推荐）或 `css/style.css` / 根目录 `style.css`。
+- 脚本修改：编辑 `js/script.js`。如需加入更复杂功能，可分拆模块化脚本并在 HTML 中引入。
+- 图片替换：将新的图片上传到 `img/` 对应子目录，更新 `<img>` 的 `src` 路径。
+- Favicons：位于 `img/logos/Favicons/`，替换图标时请保留多尺寸以保证兼容性。
+- 字体：可通过 Google Fonts 或本地字体文件（@font-face）引入。
+
+最佳实践：
+- 保持相对路径正确（尤其在子目录部署时）。
+- 对图片进行压缩（WebP 或合适的压缩设置）。
+- 在修改样式/脚本前，先备份或在分支中操作以便回退。
 
 ---
 
 ## 部署建议
 
-任何静态托管服务都支持该项目：
+适用于任何静态托管平台：
 
-- GitHub Pages
-  - 将此仓库推到 GitHub，进入仓库 Settings -> Pages，选择 `main` / `gh-pages` 分支或 `root` 目录作为发布源。
-- Netlify
-  - 直接拖拽构建产物（即仓库根目录）到 Netlify 或连接 Git 仓库进行自动部署。
-- Vercel
-  - 连接仓库并使用默认静态站点配置进行部署。
-- 自己的服务器 / CDN
-  - 将仓库内容上传到静态文件目录并通过 Nginx / Apache 提供服务。
+- GitHub Pages：将仓库 push，Settings → Pages，选择发布源（root 或 gh-pages）。
+- Netlify / Vercel：连接仓库或上传构建文件夹，自动发布。
+- 自托管（Nginx / Apache）：将文件放到静态网站目录并确保正确的 MIME 类型。
 
-示例：使用 GitHub Pages（最简单）
-1. push 到仓库
-2. 在 GitHub 仓库设置中启用 Pages，选择 root 分支为发布源
-3. 访问 https://<username>.github.io/<repo>
+部署注意：
+- 若使用自定义域，请配置 DNS 并在托管平台添加域名。
+- 确保使用 HTTPS（许多托管平台自动提供）。
 
 ---
 
-## 常见问题（FAQ）
+## 可改进项（建议）
 
-Q: 我需要构建步骤吗？  
-A: 不需要。项目为纯静态，直接部署即可。
-
-Q: 如何切换到 `index_V2.html`？  
-A: 修改 GitHub Pages 的入口或将 `index_V2.html` 的内容复制到 `index.html`（或将 `index_V2.html` 重命名为 `index.html`）。
-
-Q: 是否包含版权或许可证？  
-A: 仓库当前未必包含 LICENSE 文件。建议根据项目需要添加适当的许可证（例如 MIT）。
+- 图片优化：压缩并提供 WebP 版本
+- SEO：完善 meta 标签（title、description、og:*）
+- 无障碍（a11y）：添加语义化标签、alt 文本、键盘导航支持
+- 性能：合并/压缩 CSS/JS（如需），启用缓存策略
+- 分析：按需添加 Analytics（隐私合规下）
 
 ---
 
-## 贡献
+## 贡献指南
 
-欢迎通过 Issues 或 Pull Requests 提交改进建议或修复。建议流程：
 1. Fork 仓库
-2. 创建分支：`git checkout -b feat/some-change`
-3. 提交并推送分支：`git push origin feat/some-change`
-4. 提交 Pull Request，描述变更目的
+2. 新建分支：git checkout -b feat/your-change
+3. 提交变更：git commit -m "描述你的改动"
+4. 推送并发起 Pull Request
 
-贡献前请先在 issue 中简单沟通较大的改动。
+对大改动，请先在 Issues 里描述你的计划以便讨论。
 
 ---
 
 ## 许可证
 
-仓库中未包含明确的 LICENSE 文件（请检查根目录）。如果你希望他人自由使用并贡献，推荐添加 MIT 许可证：
+仓库当前未包含 LICENSE 文件。若需开放源码并允许贡献，推荐使用 MIT 许可证。需要的话我可以为你创建并写入 LICENSE 文件。
 
-```
-MIT License
-```
-
-（如果需要，我可以为你创建一个 LICENSE 文件并写入 MIT 内容。）
+示例（简洁提示）：
+MIT License — 允许使用、复制、修改、合并、发布、分发、再授权和/或出售软件的副本，附带版权声明和许可声明。
 
 ---
 
-## 联系 / 维护者
+## 联系与维护
 
-- 仓库：`omni_hemsida`
-- 维护者（来自仓库信息）：请参阅 Git 仓库或作者联系方式。
+- 仓库名：omni_hemsida
+- 维护者信息请参见 Git 仓库配置或项目主页
 
 ---
 
-## 其它说明 / 备忘
+## 其它备注
 
-- 保留的文件如 `OmniPOSTech-Hemsida_Copy.html` 为历史或备用版本，清理时请确认不再需要。
-- 若计划把此模板用于生产环境，建议：
-  - 优化图片（压缩、WebP）
-  - 添加 meta 标签以便 SEO 与社媒分享
-  - 添加基本的可访问性（a11y）增强
+- `OmniPOSTech-Hemsida_Copy.html` 是历史副本，清理前请确认内容不再需要。
