@@ -1,297 +1,171 @@
-/* Reset & 基础样式 */
-* { margin:0; padding:0; box-sizing:border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
-body { background-color: #f8f8ff; color: #333; line-height:1.6; }
-
-/* 颜色方案 */
-:root {
-    --primary-purple: #6a0dad;
-    --secondary-purple: #9b59b6;
-    --light-purple: #e8daef;
-    --white: #ffffff;
+:where([class^="ri-"])::before {
+    content: "\f3c2";
 }
 
-a { text-decoration:none; color: inherit; }
-
-/* 导航栏 */
-header {
-    background-color: var(--primary-purple);
-    color: var(--white);
-    padding: 1rem 2rem;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top:0;
-    z-index: 1000;
-    height: 3.5rem;
-}
-header .logo {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    height: 3.5rem;
-    overflow: hidden;
-}
-header nav a { margin-left:1.5rem; font-weight:500; }
-
-/* Logo 图片样式 */
-.logo-img {
-    height: 64px;
-    max-height: 3.5rem;
-    width: auto;
-    margin-right: 0.5rem;
-    display: block;
+body {
+    font-family: 'Inter', sans-serif;
 }
 
-/* Banner */
-.banner {
-    height: 180px;
-    background-color: var(--secondary-purple);
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--white);
-    text-align: center;
-    padding: 0 2rem;
+.gradient-bg {
+    background: linear-gradient(135deg, #6b21a8 0%, #9333ea 100%);
 }
-.banner h1 { font-size:2.5rem; margin-bottom:1rem; }
-.banner p { font-size:1.2rem; max-width:600px; }
 
-/* 信息区模块 */
-.features {
-    background-color: var (--light-purple);
-    padding:4rem 2rem;
-}
-.features h2 {
-    text-align:center;
-    font-size:2rem;
-    margin-bottom:3rem;
-    color: var(--primary-purple);
-}
-.feature-card {
-    background-color: var(--white);
-    padding:1.5rem;
-    border-radius:10px;
-    margin-bottom:2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.feature-card h3 { color: var (--primary-purple); margin-bottom:1rem; }
-.feature-card p { margin-bottom:1rem; }
-.feature-card ul { list-style: disc; padding-left:1.5rem; }
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
 
-/* 轮播图 */
-.carousel {
-    position: relative;
-    margin: 0;
-    overflow: hidden;
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
-.carousel-container {
-    display:flex;
-    transition: transform 1.2s cubic-bezier(0.4,0,0.2,1);
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.carousel-slide {
-    min-width:100%;
-    height:480px;
-    background-color: #dcd0ff;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size:1.5rem;
-    color: #fff;
+
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
 }
-.carousel-slide img {
+
+.animate-fade-in-delay {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.animate-fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+.floating-dots {
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-}
-.carousel-buttons {
-    position:absolute;
-    top:50%;
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 1rem;
-}
-.carousel-buttons button {
-    background-color: rgba(106,13,173,0.7);
-    border:none;
-    color:white;
-    padding:0.5rem 1rem;
-    cursor:pointer;
-    border-radius:5px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: float 6s ease-in-out infinite;
 }
 
-/* 联系我们模块 */
-.contact {
-    padding:4rem 2rem;
-    background-color: var(--white);
-}
-.contact h2 { text-align:center; color: var (--primary-purple); margin-bottom:2rem; }
-.contact form {
-    max-width:600px;
-    margin:0 auto;
-    display:flex;
-    flex-direction: column;
-}
-.contact input, .contact textarea {
-    margin-bottom:1rem;
-    padding:0.8rem;
-    border:1px solid #ccc;
-    border-radius:5px;
-    font-size:1rem;
-}
-.contact button {
-    padding:0.8rem;
-    border:none;
-    border-radius:5px;
-    background-color: var(--primary-purple);
-    color:white;
-    font-size:1rem;
-    cursor:pointer;
+.animated-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    width: 100%;
+    transform-origin: left;
 }
 
-/* 政策模块 */
-.policies {
-    background-color: var(--light-purple);
-    padding:4rem 2rem;
-}
-.policies h2 { text-align:center; color: var(--primary-purple); margin-bottom:2rem; }
-.policies .policy-item { margin-bottom:1.5rem; }
-
-/* 页脚 */
-footer {
-    background-color: var(--primary-purple);
-    color:white;
-    text-align:center;
-    padding:2rem;
+.line-1 {
+    top: 20%;
+    animation: moveLine1 15s linear infinite;
 }
 
-/* 响应式 */
-@media(max-width:768px){
-    header nav a { margin-left:1rem; font-size:0.9rem; }
-    .banner h1 { font-size:2rem; }
-    .banner p { font-size:1rem; }
+.line-2 {
+    top: 50%;
+    animation: moveLine2 20s linear infinite;
 }
 
-/* 桌面端：左右各保留25%空白，中央内容宽度约50% */
-@media (min-width: 1024px) {
-    body {
-        /* 在大屏幕上为整个页面两侧增加空白边距，使中央内容更居中、便于电脑浏览 */
-        padding-left: 25%;
-        padding-right: 25%;
-        background-color: #f8f8ff; /* 保持背景颜色一致 */
+.line-3 {
+    top: 80%;
+    animation: moveLine3 25s linear infinite;
+}
+
+@keyframes moveLine1 {
+    0% {
+        transform: translateX(-100%) rotate(0deg);
     }
 
-    /* 保持 header 内边距使导航不会贴边 */
-    header {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    45% {
+        transform: translateX(100%) rotate(0deg);
     }
 
-    /* 确保轮播控制按钮在中央可用区域内对齐 */
-    .carousel-buttons {
-        width: 100%;
-        left: 0;
-        right: 0;
-        padding: 0 1rem;
+    50% {
+        transform: translateX(100%) rotate(180deg);
+    }
+
+    95% {
+        transform: translateX(-100%) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(-100%) rotate(360deg);
     }
 }
 
-/* 特点马赛克拼接风格 */
-.features-mosaic {
-    background: var(--light-purple);
-    padding: 2rem 2rem;
+@keyframes moveLine2 {
+    0% {
+        transform: translateX(-100%) rotate(0deg);
+    }
+
+    65% {
+        transform: translateX(100%) rotate(0deg);
+    }
+
+    70% {
+        transform: translateX(100%) rotate(180deg);
+    }
+
+    95% {
+        transform: translateX(-100%) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(-100%) rotate(360deg);
+    }
 }
-.features-mosaic h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: var(--primary-purple);
+
+@keyframes moveLine3 {
+    0% {
+        transform: translateX(-100%) rotate(0deg);
+    }
+
+    35% {
+        transform: translateX(100%) rotate(0deg);
+    }
+
+    40% {
+        transform: translateX(100%) rotate(180deg);
+    }
+
+    95% {
+        transform: translateX(-100%) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(-100%) rotate(360deg);
+    }
 }
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 120px;
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.mosaic-item {
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(106,13,173,0.06);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 1.2rem 1rem;
-    transition: box-shadow 0.2s;
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
     overflow: hidden;
 }
-.mosaic-item h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: var(--primary-purple);
-}
-.mosaic-item p, .mosaic-item ul {
-    font-size: 0.98rem;
-    color: #333;
-    margin: 0;
-}
-.mosaic-item ul {
-    padding-left: 1.2rem;
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
-/* 尺寸控制 */
-.mosaic-lg { grid-column: span 3; grid-row: span 2; }
-.mosaic-md { grid-column: span 2; grid-row: span 1; }
-.mosaic-sm { grid-column: span 1; grid-row: span 1; }
-
-/* 颜色控制 */
-.mosaic-purple-1 { background: #b39ddb; }   /* 深紫偏灰 */
-.mosaic-purple-2 { background: #9575cd; }   /* 亮紫 */
-.mosaic-purple-3 { background: #7e57c2; }   /* 更深紫 */
-.mosaic-purple-4 { background: #ede7f6; }   /* 浅紫 */
-.mosaic-purple-5 { background: #f3e5f5; }   /* 更浅紫 */
-.mosaic-white { background: #fff; }
-
-/* 深色背景文字颜色调整 */
-.mosaic-purple-1, .mosaic-purple-2, .mosaic-purple-3 {
-    color: #fff;
-}
-.mosaic-purple-1 h3, .mosaic-purple-2 h3, .mosaic-purple-3 h3 {
-    color: #e1cfff;
-}
-.mosaic-purple-1 p, .mosaic-purple-2 p, .mosaic-purple-3 p,
-.mosaic-purple-1 ul, .mosaic-purple-2 ul, .mosaic-purple-3 ul,
-.mosaic-purple-1 li, .mosaic-purple-2 li, .mosaic-purple-3 li {
-    color: #fff;
+.carousel-slide {
+    min-width: 100%;
 }
 
-/* 纯色占位块无内容 */
-.mosaic-item:empty, .mosaic-item.mosaic-sm:not(:has(h3)) {
-    box-shadow: none;
-    padding: 0;
-}
-
-/* 响应式 */
-@media (max-width: 1024px) {
-    .mosaic-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 100px;
-    }
-    .mosaic-lg { grid-column: span 3; grid-row: span 1; }
-    .mosaic-md { grid-column: span 2; grid-row: span 1; }
-    .mosaic-sm { grid-column: span 1; grid-row: span 1; }
-}
-@media (max-width: 600px) {
-    .mosaic-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 80px;
-    }
-    .mosaic-lg, .mosaic-md, .mosaic-sm { grid-column: span 1; grid-row: span 1; }
-    .features-mosaic { padding: 2rem 0.5rem; }
+.carousel-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
 }

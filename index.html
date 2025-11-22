@@ -1,147 +1,411 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OmniPOSTech 官网</title>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6b21a8', secondary: '#f3f4f6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <link rel="icon" type="image/png" href="img/logos/Favicons/browser.png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-    <!-- 导航栏 -->
-    <header>
-        <div class="logo">
-            <img src="img/logos/png/logo_no_bg2.png" alt="OmniPOSTech Logo" class="logo-img" />
-            OmniPOSTech
+<body class="min-h-screen">
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 bg-[#6b21a8] shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" id="homeLogo" class="flex items-center space-x-2">
+                <img src="img/logos/png/logo_no_bg2.png" alt="OmniPOSTech Logo" class="h-16 object-contain">
+                <span class="text-white font-semibold text-xl">OmniPOSTech</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#carousel" class="text-white hover:text-white/80 font-medium transition-colors">应用场景</a>
+                <a href="#features" class="text-white hover:text-white/80 font-medium transition-colors">特点</a>
+                <a href="#contact" class="text-white hover:text-white/80 font-medium transition-colors">联系我们</a>
+                <a href="#policies" class="text-white hover:text-white/80 font-medium transition-colors">政策</a>
+                <button
+                    class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap">立即开始</button>
+            </nav>
+            <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
+                <i class="ri-menu-line text-white ri-lg"></i>
+            </button>
         </div>
-        <nav>
-            <a href="#carousel">应用场景</a>
-            <a href="#features">特点</a>
-            <a href="#contact">联系我们</a>
-            <a href="#policies">政策</a>
-        </nav>
     </header>
 
-    <!-- Banner -->
-    <section class="banner">
-        <div>
-            <h1>让餐厅运营更轻松</h1>
-            <p>OmniPOSTech 提供 POS、在线点餐与二维码点餐一体化解决方案，适配中餐及亚洲餐厅流程。</p>
+    <!-- Hero Section -->
+    <section class="pt-24 relative overflow-hidden">
+        <div class="gradient-bg relative">
+            <div class="absolute top-0 left-0 w-full h-full">
+                <div class="floating-dots"></div>
+                <div class="animated-line line-1"></div>
+                <div class="animated-line line-2"></div>
+                <div class="animated-line line-3"></div>
+            </div>
+            <div class="container mx-auto px-4 py-20 relative">
+                <div class="max-w-3xl text-white opacity-0 translate-y-8 animate-fade-in-up">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">让餐厅运营更轻松</h1>
+                    <p class="text-xl mb-8 opacity-0 animate-fade-in-delay">OmniPOSTech 提供
+                        POS、在线点餐与二维码点餐一体化解决方案，适配中餐及亚洲餐厅流程。</p>
+                    <div class="flex flex-wrap gap-4 opacity-0 animate-fade-in-delay-2">
+                        <button
+                            class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap">预约演示</button>
+                        <button
+                            class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center whitespace-nowrap group">
+                            <span
+                                class="w-6 h-6 mr-2 flex items-center justify-center transform group-hover:rotate-180 transition-transform duration-500">
+                                <i class="ri-play-circle-line ri-lg"></i>
+                            </span>
+                            <span>观看视频</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 轮播图 -->
-    <section class="carousel" id="carousel">
-        <div class="carousel-container">
-            <div class="carousel-slide"><img src="img/scene/img1.jpg" alt="餐厅场景1"></div>
-            <div class="carousel-slide"><img src="img/scene/img2.png" alt="餐厅场景1"></div>
-            <div class="carousel-slide"><img src="img/scene/img3.jpg" alt="餐厅场景1"></div>
-        </div>
-        <div class="carousel-buttons">
-            <button id="prev">&#10094;</button>
-            <button id="next">&#10095;</button>
+    <!-- Carousel Section -->
+    <section class="py-20 bg-white" id="carousel">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">应用场景</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">真实餐厅使用场景展示</p>
+            </div>
+            <div class="carousel-container rounded-lg shadow-lg overflow-hidden">
+                <div class="carousel-inner" id="carouselInner">
+                    <div class="carousel-slide"><img src="img/scene/img1.jpg" alt="餐厅场景1"></div>
+                    <div class="carousel-slide"><img src="img/scene/img2.png" alt="餐厅场景2"></div>
+                    <div class="carousel-slide"><img src="img/scene/img3.jpg" alt="餐厅场景3"></div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6 space-x-4">
+                <button id="prevBtn"
+                    class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors">
+                    <i class="ri-arrow-left-s-line ri-lg"></i>
+                </button>
+                <button id="nextBtn"
+                    class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors">
+                    <i class="ri-arrow-right-s-line ri-lg"></i>
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- 信息区模块 -->
-    <section class="features-mosaic" id="features">
-        <h2>🌟 为什么选择 OmniPOSTech？</h2>
-        <div class="mosaic-grid">
-            <div class="mosaic-item mosaic-lg mosaic-purple-1" style="grid-column: 1 / span 3; grid-row: 1 / span 2;">
-                <h3>简单上手，轻松培训</h3>
-                <p>界面清晰、流程直观，员工经过短时间培训即可熟练使用。</p>
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50" id="features">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">🌟 为什么选择 OmniPOSTech？</h2>
             </div>
-            <div class="mosaic-item mosaic-md mosaic-purple-2" style="grid-column: 4 / span 2; grid-row: 1 / span 1;">
-                <h3>中文支持贯穿前台与后厨</h3>
-                <p>不只是收银界面支持中文，厨房单据、菜名、备注也可以中文显示。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Large Feature 1 -->
+                <div
+                    class="md:col-span-2 bg-gradient-to-br from-purple-700 to-purple-900 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-bold mb-4">简单上手，轻松培训</h3>
+                    <p class="text-white/90">界面清晰、流程直观，员工经过短时间培训即可熟练使用。</p>
+                </div>
+                <!-- Medium Feature -->
+                <div
+                    class="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold mb-3">中文支持贯穿前台与后厨</h3>
+                    <p class="text-white/90">不只是收银界面支持中文，厨房单据、菜名、备注也可以中文显示。</p>
+                </div>
+                <!-- Medium Feature -->
+                <div
+                    class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold mb-3">一价全包：POS + 在线点餐 + 二维码点餐</h3>
+                    <p class="text-white/90">三大核心功能，不拆开卖，不收插件费。透明价格，减少餐厅数字化成本。</p>
+                </div>
+                <!-- Large Feature 2 -->
+                <div class="md:col-span-2 bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">堂食数字化方案已成熟</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-check-line ri-lg"></i>
+                            </div>
+                            <span class="text-gray-700">收银台 POS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-check-line ri-lg"></i>
+                            </div>
+                            <span class="text-gray-700">店内扫码点餐</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-check-line ri-lg"></i>
+                            </div>
+                            <span class="text-gray-700">在线菜单浏览</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-check-line ri-lg"></i>
+                            </div>
+                            <span class="text-gray-700">中餐、亚洲餐厅后厨流程深度适配</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Medium Feature -->
+                <div
+                    class="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold mb-3">未来将接入欧洲常用外卖和点餐平台</h3>
+                    <p class="text-white/90">让线上订单自动同步 POS，减少人工操作。</p>
+                </div>
+                <!-- Medium Feature -->
+                <div class="md:col-span-2 bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">年轻创新团队，持续快速更新</h3>
+                    <p class="text-gray-700">不墨守成规，不走旧路，我们的目标是让"开餐厅"这件事更轻松。</p>
+                </div>
             </div>
-            <div class="mosaic-item mosaic-sm mosaic-purple-4" style="grid-column: 6 / span 1; grid-row: 1 / span 1;"></div>
-            <div class="mosaic-item mosaic-md mosaic-purple-3" style="grid-column: 4 / span 2; grid-row: 2 / span 1;">
-                <h3>一价全包：POS + 在线点餐 + 二维码点餐</h3>
-                <p>三大核心功能，不拆开卖，不收插件费。透明价格，减少餐厅数字化成本。</p>
-            </div>
-            <div class="mosaic-item mosaic-sm mosaic-purple-5" style="grid-column: 6 / span 1; grid-row: 2 / span 1;"></div>
-            <div class="mosaic-item mosaic-lg mosaic-white" style="grid-column: 2 / span 3; grid-row: 3 / span 2;">
-                <h3>堂食数字化方案已成熟</h3>
-                <ul>
-                    <li>收银台 POS</li>
-                    <li>店内扫码点餐</li>
-                    <li>在线菜单浏览</li>
-                    <li>中餐、亚洲餐厅后厨流程深度适配</li>
-                </ul>
-            </div>
-            <div class="mosaic-item mosaic-md mosaic-purple-2" style="grid-column: 5 / span 2; grid-row: 3 / span 1;">
-                <h3>未来将接入欧洲常用外卖和点餐平台</h3>
-                <p>让线上订单自动同步 POS，减少人工操作。</p>
-            </div>
-            <div class="mosaic-item mosaic-sm mosaic-purple-3" style="grid-column: 1 / span 1; grid-row: 3 / span 1;"></div>
-            <div class="mosaic-item mosaic-md mosaic-white" style="grid-column: 5 / span 2; grid-row: 4 / span 1;">
-                <h3>年轻创新团队，持续快速更新</h3>
-                <p>不墨守成规，不走旧路，我们的目标是让“开餐厅”这件事更轻松。</p>
-            </div>
-            <div class="mosaic-item mosaic-sm mosaic-purple-1" style="grid-column: 1 / span 1; grid-row: 4 / span 1;"></div>
         </div>
     </section>
 
-    <!-- 联系我们 -->
-    <section class="contact" id="contact">
-        <h2>联系我们</h2>
-        <form>
-            <input type="text" placeholder="姓名" required>
-            <input type="email" placeholder="邮箱" required>
-            <input type="tel" placeholder="电话">
-            <textarea rows="5" placeholder="留言内容" required></textarea>
-            <button type="submit">发送</button>
-        </form>
+    <!-- Contact Section -->
+    <section class="py-20 bg-white" id="contact">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">联系我们</h2>
+                    <p class="text-gray-600">有任何问题？欢迎随时与我们联系</p>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <input type="text" placeholder="姓名" required
+                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="邮箱" required
+                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="电话"
+                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <textarea rows="5" placeholder="留言内容" required
+                            class="w-full px-4 py-3 border border-gray-300 !rounded-button focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-purple-800 transition-colors">发送</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <!-- 政策模块 -->
-<section class="policies" id="policies">
-    <div class="container">
-        <h2>政策信息</h2>
+    <!-- Policies Section -->
+    <section class="py-20 bg-gray-50" id="policies">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">政策信息</h2>
 
-        <div class="policy-item">
-            <strong>退货政策：</strong>
-            <p>由于 OmniPOSTech 提供的是软件服务产品，通常不涉及实体商品退货。如果您购买了我们的硬件设备（如 POS 终端），可在收到商品后的 14 天内申请退货。退货商品需保持完整包装、未损坏，且附带发票或购买凭证。退货运费由客户承担，除非商品存在质量问题或配送错误。</p>
+                <div class="space-y-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">退货政策：</h3>
+                        <p class="text-gray-600">由于 OmniPOSTech 提供的是软件服务产品，通常不涉及实体商品退货。如果您购买了我们的硬件设备（如 POS 终端），可在收到商品后的
+                            14 天内申请退货。退货商品需保持完整包装、未损坏，且附带发票或购买凭证。退货运费由客户承担，除非商品存在质量问题或配送错误。</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">退款和争议政策：</h3>
+                        <div class="space-y-3 text-gray-600">
+                            <p>1. 软件服务退款：对于订阅服务，客户可在购买后的 14 天内申请全额退款（前提是未使用或使用极少）。超过此期限，退款将根据使用情况部分返还。</p>
+                            <p>2. 争议处理：客户如对账单或服务有异议，请在 30 天内通过 support@omnipostech.com 联系客服。我们将核查问题并在 7 个工作日内提供解决方案。</p>
+                            <p>3. 特殊情况：若因服务中断、技术问题或错误计费导致的损失，OmniPOSTech 将根据实际情况提供适当补偿。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">取消政策：</h3>
+                        <p class="text-gray-600">客户可随时取消订阅服务，但需提前 7
+                            天通知。已支付的订阅费用通常不予退还，除非符合退款政策中列明的条件。取消后，账户将于当前计费周期结束时停止访问服务。</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">法律或出口限制：</h3>
+                        <div class="space-y-3 text-gray-600">
+                            <p>1. 客户在使用 OmniPOSTech 服务时需遵守瑞典及所在国家的法律法规。</p>
+                            <p>2. 禁止将我们的软件用于违法用途，包括但不限于侵权、诈骗或洗钱等活动。</p>
+                            <p>3. 软件及相关技术可能受到出口管制或国际贸易法规限制，客户不得将其转售或出口至受限国家或地区。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">促销条款与条件：</h3>
+                        <div class="space-y-3 text-gray-600">
+                            <p>1. 所有促销活动仅限在指定时间内有效，并适用于明确列出的产品或服务。</p>
+                            <p>2. 每个客户在同一促销活动中可能仅享受一次优惠，活动不可与其他折扣同时使用，除非特别说明。</p>
+                            <p>3. OmniPOSTech 保留随时修改或终止促销活动的权利，且无需事先通知。</p>
+                            <p>4. 活动条款如与法律法规冲突，以相关法律法规为准。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="policy-item">
-            <strong>退款和争议政策：</strong>
-            <p>1. 软件服务退款：对于订阅服务，客户可在购买后的 14 天内申请全额退款（前提是未使用或使用极少）。超过此期限，退款将根据使用情况部分返还。</p>
-            <p>2. 争议处理：客户如对账单或服务有异议，请在 30 天内通过 support@omnipostech.com 联系客服。我们将核查问题并在 7 个工作日内提供解决方案。</p>
-            <p>3. 特殊情况：若因服务中断、技术问题或错误计费导致的损失，OmniPOSTech 将根据实际情况提供适当补偿。</p>
+    <!-- Call-to-Action Section -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">准备好让餐厅管理更轻松了吗？</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">立即体验 OmniPOSTech，让您的餐厅运营更高效</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button
+                    class="bg-white text-primary px-8 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap">开始免费试用</button>
+                <button
+                    class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors whitespace-nowrap">联系销售</button>
+            </div>
         </div>
+    </section>
 
-        <div class="policy-item">
-            <strong>取消政策：</strong>
-            <p>客户可随时取消订阅服务，但需提前 7 天通知。已支付的订阅费用通常不予退还，除非符合退款政策中列明的条件。取消后，账户将于当前计费周期结束时停止访问服务。</p>
+    <!-- Footer -->
+    <footer class="bg-purple-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="img/logos/png/logo_no_bg2.png" alt="OmniPOSTech" class="h-12 object-contain">
+                        <span class="font-semibold text-xl">OmniPOSTech</span>
+                    </div>
+                    <p class="text-white/80 mb-4">为中餐及亚洲餐厅提供一体化 POS 解决方案</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                            <i class="ri-twitter-fill text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                            <i class="ri-instagram-fill text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                            <i class="ri-linkedin-fill text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#carousel" class="text-white/80 hover:text-white transition-colors">应用场景</a></li>
+                        <li><a href="#features" class="text-white/80 hover:text-white transition-colors">特点</a></li>
+                        <li><a href="#contact" class="text-white/80 hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="#policies" class="text-white/80 hover:text-white transition-colors">政策</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系方式</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-white/80">Brunnshögsgatan 6, 224 71 Lund, Sweden</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-white/80">+46723410704</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-white/80">support@omnipostech.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">新闻订阅</h3>
+                    <p class="text-white/80 mb-4">订阅我们的新闻，获取最新更新和优惠</p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱"
+                            class="px-4 py-2 w-full border-none !rounded-l-button focus:outline-none text-gray-800">
+                        <button type="submit"
+                            class="bg-primary px-4 py-2 !rounded-r-button hover:bg-purple-800 transition-colors whitespace-nowrap">订阅</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-12 pt-8 text-center text-white/60">
+                <p>&copy; 2025 OmniPOSTech. All rights reserved.</p>
+            </div>
         </div>
-
-        <div class="policy-item">
-            <strong>法律或出口限制：</strong>
-            <p>1. 客户在使用 OmniPOSTech 服务时需遵守瑞典及所在国家的法律法规。</p>
-            <p>2. 禁止将我们的软件用于违法用途，包括但不限于侵权、诈骗或洗钱等活动。</p>
-            <p>3. 软件及相关技术可能受到出口管制或国际贸易法规限制，客户不得将其转售或出口至受限国家或地区。</p>
-        </div>
-
-        <div class="policy-item">
-            <strong>促销条款与条件：</strong>
-            <p>1. 所有促销活动仅限在指定时间内有效，并适用于明确列出的产品或服务。</p>
-            <p>2. 每个客户在同一促销活动中可能仅享受一次优惠，活动不可与其他折扣同时使用，除非特别说明。</p>
-            <p>3. OmniPOSTech 保留随时修改或终止促销活动的权利，且无需事先通知。</p>
-            <p>4. 活动条款如与法律法规冲突，以相关法律法规为准。</p>
-        </div>
-
-    </div>
-</section>
-
-
-    <!-- 页脚 -->
-    <footer>
-        &copy; 2025 OmniPOSTech. All rights reserved.
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const carouselInner = document.getElementById('carouselInner');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const offset = -currentIndex * 100;
+                carouselInner.style.transform = `translateX(${offset}%)`;
+            }
+
+            nextBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            });
+
+            // Auto-play carousel
+            setInterval(function () {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const nav = document.querySelector('nav');
+            mobileMenuBtn.addEventListener('click', function () {
+                nav.classList.toggle('hidden');
+                nav.classList.toggle('flex');
+                nav.classList.toggle('flex-col');
+                nav.classList.toggle('absolute');
+                nav.classList.toggle('top-16');
+                nav.classList.toggle('left-0');
+                nav.classList.toggle('right-0');
+                nav.classList.toggle('bg-purple-700');
+                nav.classList.toggle('p-4');
+                nav.classList.toggle('shadow-lg');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
