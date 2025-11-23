@@ -163,5 +163,16 @@
   "cta.title": "准备好让餐厅管理更轻松了吗？",
   "cta.subtitle": "立即体验 OmniPOSTech，让您的餐厅运营更高效",
   "cta.trial": "开始免费试用",
-  "cta.sales": "联系销售"
+  "cta.sales": "联系销售",
+  "pain.title": "餐厅数字化的痛点",
+  "pain.subtitle": "我们了解餐厅老板和员工的真实困扰",
+  "pain.complex.title": "系统太复杂，新员工学不会",
+  "pain.complex.desc": "传统POS和点餐系统界面繁琐，培训周期长，影响餐厅效率。",
+  "pain.english.title": "英文界面找半天，容易点错",
+  "pain.english.desc": "员工不熟悉英文菜单，操作易出错，影响顾客体验。",
+  "pain.budget.title": "小店预算有限，现有系统门槛太高",
+  "pain.budget.desc": "高昂的系统费用和复杂的硬件要求让小餐厅望而却步。",
+  "pain.swedenpay.title": "瑞典支付流程复杂",
+  "pain.swedenpay.desc": "本地支付方式多，流程繁琐，顾客和员工都容易困惑。",
+  "pain.summary": "OmniPOSTech 为此而生，一站式解决餐厅数字化难题！"
 }

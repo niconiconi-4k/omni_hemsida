@@ -163,5 +163,16 @@
   "cta.title": "Ready to make restaurant management easier?",
   "cta.subtitle": "Experience OmniPOSTech now and make your restaurant operations more efficient",
   "cta.trial": "Start Free Trial",
-  "cta.sales": "Contact Sales"
+  "cta.sales": "Contact Sales",
+  "pain.title": "Pain Points of Restaurant Digitalization",
+  "pain.subtitle": "We understand the real challenges faced by restaurant owners and staff",
+  "pain.complex.title": "Systems are too complex, new staff can't learn",
+  "pain.complex.desc": "Traditional POS and ordering systems are complicated, long training cycles hurt efficiency.",
+  "pain.english.title": "English interface is hard to navigate, easy to make mistakes",
+  "pain.english.desc": "Staff unfamiliar with English menus make errors, hurting customer experience.",
+  "pain.budget.title": "Small restaurant budget, high system barriers",
+  "pain.budget.desc": "Expensive systems and complex hardware requirements keep small restaurants out.",
+  "pain.swedenpay.title": "Swedish payment process is complicated",
+  "pain.swedenpay.desc": "Local payment methods are many and confusing for both customers and staff.",
+  "pain.summary": "OmniPOSTech was born for this—one-stop solution for restaurant digitalization!"
 }
