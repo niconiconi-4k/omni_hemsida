@@ -4,6 +4,10 @@
   "nav.contact": "联系我们",
   "nav.policies": "政策",
   "nav.getStarted": "立即开始",
+  "nav.painpoints": "餐厅痛点",
+  "nav.story": "我们的故事",
+  "nav.testimonials": "客户评价",
+  "nav.pricing": "价格方案",
   "hero.title": "让餐厅运营更轻松",
   "hero.subtitle": "OmniPOSTech 提供 POS、在线点餐与二维码点餐一体化解决方案，适配中餐及亚洲餐厅流程。",
   "hero.demo": "预约演示",
@@ -150,6 +154,10 @@
   "footer.quick.features": "特点",
   "footer.quick.contact": "联系我们",
   "footer.quick.policies": "政策",
+  "footer.quick.painpoints": "餐厅痛点",
+  "footer.quick.story": "我们的故事",
+  "footer.quick.testimonials": "客户评价",
+  "footer.quick.pricing": "价格方案",
   "footer.contact": "联系方式",
   "footer.news": "新闻订阅",
   "footer.news.text": "订阅我们的新闻，获取最新更新和优惠",
@@ -196,6 +204,25 @@
       "text": "很棒的软件，非常容易上手使用。",
       "boss": "王老板",
       "restaurant": ""
+    }
+  },
+  "pricing": {
+    "title": "价格方案",
+    "subtitle": "灵活套餐，满足不同餐厅需求",
+    "basic": {
+      "title": "基础版",
+      "desc": "小店适用",
+      "price": "敬请期待"
+    },
+    "pro": {
+      "title": "进阶版",
+      "desc": "快餐适用",
+      "price": "敬请期待"
+    },
+    "adv": {
+      "title": "专业版",
+      "desc": "扩展需求",
+      "price": "敬请期待"
     }
   }
 }

@@ -150,6 +150,10 @@
   "footer.quick.features": "Features",
   "footer.quick.contact": "Contact",
   "footer.quick.policies": "Policies",
+  "footer.quick.painpoints": "Pain Points",
+  "footer.quick.story": "Our Story",
+  "footer.quick.testimonials": "Testimonials",
+  "footer.quick.pricing": "Pricing Plans",
   "footer.contact": "Contact",
   "footer.news": "Newsletter",
   "footer.news.text": "Subscribe for latest updates and offers",
@@ -196,6 +200,25 @@
       "text": "Wonderful software, very easy to use and get started.",
       "boss": "Boss Wang",
       "restaurant": ""
+    }
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "subtitle": "Flexible packages for every restaurant need",
+    "basic": {
+      "title": "Basic",
+      "desc": "For small restaurants",
+      "price": "Coming soon"
+    },
+    "pro": {
+      "title": "Pro",
+      "desc": "For fast food",
+      "price": "Coming soon"
+    },
+    "adv": {
+      "title": "Advanced",
+      "desc": "For extended needs",
+      "price": "Coming soon"
     }
   }
 }
