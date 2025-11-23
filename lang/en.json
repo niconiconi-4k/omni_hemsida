@@ -174,5 +174,9 @@
   "pain.budget.desc": "Expensive systems and complex hardware requirements keep small restaurants out.",
   "pain.swedenpay.title": "Swedish payment process is complicated",
   "pain.swedenpay.desc": "Local payment methods are many and confusing for both customers and staff.",
-  "pain.summary": "OmniPOSTech was born for this—one-stop solution for restaurant digitalization!"
+  "pain.summary": "OmniPOSTech was born for this—one-stop solution for restaurant digitalization!",
+  "story.title": "Our Story",
+  "story.subtitle": "A true journey of Chinese entrepreneurs",
+  "story.full": "We are a Chinese startup team striving in Sweden. It all began with a few friends, most of us working in restaurants or having family in the business. Every gathering, restaurant owners would complain: systems are too complex, new staff can't learn, English interfaces are hard to navigate, mistakes happen, customers get frustrated. Small restaurants have limited budgets, existing systems are expensive, and Swedish payment processes are confusing. We realized these pain points were actually opportunities. So we decided to build a digital system truly suited for Chinese restaurants. In the winter wind, we braved the snow to fix printers, tuned systems by the kitchen, and worked side by side with owners and staff to polish every detail. We build systems with heart, truly usable for our own community, so every restaurant can operate with peace of mind. OmniPOSTech is not just technology, but emotion and companionship. We hope to grow together with every restaurant owner, bringing warmth and trust into the digital age.",
+  "story.summary": "This is not just technology, but emotion and companionship. OmniPOSTech grows together with you."
 }
