@@ -178,5 +178,24 @@
   "story.title": "Our Story",
   "story.subtitle": "A true journey of Chinese entrepreneurs",
   "story.full": "We are a Chinese startup team striving in Sweden. It all began with a few friends, most of us working in restaurants or having family in the business. Every gathering, restaurant owners would complain: systems are too complex, new staff can't learn, English interfaces are hard to navigate, mistakes happen, customers get frustrated. Small restaurants have limited budgets, existing systems are expensive, and Swedish payment processes are confusing. We realized these pain points were actually opportunities. So we decided to build a digital system truly suited for Chinese restaurants. In the winter wind, we braved the snow to fix printers, tuned systems by the kitchen, and worked side by side with owners and staff to polish every detail. We build systems with heart, truly usable for our own community, so every restaurant can operate with peace of mind. OmniPOSTech is not just technology, but emotion and companionship. We hope to grow together with every restaurant owner, bringing warmth and trust into the digital age.",
-  "story.summary": "This is not just technology, but emotion and companionship. OmniPOSTech grows together with you."
+  "story.summary": "This is not just technology, but emotion and companionship. OmniPOSTech grows together with you.",
+  "testimonials": {
+    "title": "Testimonials / Partner Restaurants",
+    "subtitle": "Real voices from our partner restaurant owners",
+    "1": {
+      "text": "Great software! I used to be totally confused every month when doing accounts and taxes, always working late into the night. Now with Omni, it's so much easier and I don't mess things up anymore.",
+      "boss": "Boss Feng",
+      "restaurant": ""
+    },
+    "2": {
+      "text": "This is truly amazing software. I never make mistakes at the payment and cashier part anymore.",
+      "boss": "Boss Ma",
+      "restaurant": ""
+    },
+    "3": {
+      "text": "Wonderful software, very easy to use and get started.",
+      "boss": "Boss Wang",
+      "restaurant": ""
+    }
+  }
 }
