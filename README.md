@@ -1,188 +1,205 @@
 # Omni Hemsida
 
-一个简单、轻量的静态网站模板（HTML / CSS / JS），适合作为公司或产品展示页的起点。该仓库包含多个页面版本与样式文件，资源结构清晰，便于本地预览、修改与部署到任意静态托管服务。
+轻量静态网站模板（HTML / CSS / JS）。此 README 包含本地预览说明以及两种在 AWS 上部署的方案：推荐的静态托管（S3 + CloudFront）和基于 EC2 的快速部署（使用您指定的启动命令 `python3 -m http.server 8000` 并绑定自定义域名）。
 
 ---
 
 ## 快速概览
 
 - 技术栈：纯静态 HTML、CSS、少量 JavaScript
-- 目标：演示页 / 信息展示 / 小型静态站点
-- 无构建步骤 —— 可直接打开或通过简单静态服务器预览
+- 本地预览：无需构建，可直接打开或用简单静态服务器查看
+- AWS 部署：支持 S3 + CloudFront（推荐）或在 EC2 上运行 python 内置服务器并绑定域名（按您要求提供的启动命令）
 
 ---
 
-## 本地预览与多语言说明
+## 本地预览（快速回顾）
 
-### 本地预览（推荐）
-
-方法一：直接用浏览器打开（快速）
-- 在文件管理器中双击 `index.html`，或在终端运行：
+方法一：直接打开
+- 双击 `index.html` 或在终端运行：
   open index.html
 
-方法二：使用 Python 内置静态服务器（推荐，支持相对路径与多语言 JSON 加载）
-1. 进入仓库根目录：
-   cd /path/to/omni_hemsida
-2. 启动服务器：
-   python3 -m http.server 8000
-3. 打开浏览器访问：
-   http://localhost:8000/index.html
-4. 停止服务器：Ctrl+C
-
-方法三：使用 Node 工具（若有 Node.js）
-- 一次性运行（无需全局安装）：
-  npx serve .
-- 或安装并运行 serve：
-  npm i -g serve
-  serve
+方法二：Python 静态服务器（推荐用于调试）
+- 在仓库根目录运行：
+  python3 -m http.server 8000
+- 然后访问：
+  http://localhost:8000
 
 ---
 
-## 多语言与 i18n 说明
+## 推荐：使用 AWS S3 + CloudFront（最佳实践，免维护、性能优越）
 
-本项目所有词条均存储于 `lang/en.json` 和 `lang/zh.json`，页面通过 `js/i18n.js` 自动加载对应 JSON 文件。
+适合纯静态站点，推荐用于生产环境。
 
-**自动路径适配**：
-`i18n.js` 会根据自身脚本位置自动推算语言 JSON 路径，无论页面或脚本放在哪个目录都能正确加载，无需手动修改 fetch 路径。
+主要步骤概述：
+1. 在 AWS S3 创建一个 bucket（例如 `omni-hemsida.example.com`），启用静态网站托管并上传网站文件（index.html、css、js、img 等）。
+2. 在 S3 的 Bucket Policy 中允许 CloudFront 访问（或使用 Origin Access Identity / Origin Access Control）。
+3. 在 CloudFront 创建分配（Distribution），Origin 指向 S3 Bucket 的静态站点端点或私有 bucket + OAC；设置默认根对象为 `index.html`。
+4. 在 Route 53 中创建 A (或 ALIAS) 记录，将域名指向 CloudFront 分配的域名。
+5. 在 CloudFront 配置自定义域并使用 ACM（us-east-1）颁发或导入证书以启用 HTTPS。
 
-**如何切换语言**：
-- 页面右上角语言切换按钮，或下拉菜单。
-- 切换后自动加载对应 JSON 并刷新所有带 `data-i18n` 属性的内容。
+优点：
+- 高可用、可缓存、低维护
+- 自动使用 HTTPS（通过 ACM）
+- 更适合生产流量
 
-**注意事项**：
-- 请务必通过 HTTP 服务器访问页面，否则浏览器安全策略可能阻止 JSON 加载（file:// 下 fetch 失败）。
-- 若页面报 404，检查 lang 路径是否与实际文件结构一致。
-
----
-
-## 如何切换页面版本
-  open index.html
-
-方法二：使用 Python 内置静态服务器（推荐，支持相对路径）
-1. 进入仓库根目录：
-   cd /path/to/omni_hemsida
-2. 启动服务器：
-   python3 -m http.server 8000
-3. 打开浏览器访问：
-   http://localhost:8000/index.html
-4. 停止服务器：Ctrl+C
-
-方法三：使用 Node 工具（若有 Node.js）
-- 一次性运行（无需全局安装）：
-  npx serve .
-- 或安装并运行 serve：
-  npm i -g serve
-  serve
+参考：AWS 文档 - Host a static website on Amazon S3 and serve it with CloudFront
 
 ---
 
-## 如何切换页面版本
+## 在 EC2 上部署（使用 python3 -m http.server 8000，并绑定域名）
 
-- 切换到 V2：在浏览器中直接打开 `index_V2.html`，或将 `index_V2.html` 的内容复制/重命名为 `index.html` 以作为默认入口。
-- 若部署到 GitHub Pages，可将 `index_V2.html` 内容替换 `index.html` 后 push。
+如果您希望使用内置 Python HTTP 服务器并在 EC2 上运行（例如用于简单测试或在短期内快速部署），下面提供完整步骤。此方案相对不推荐用于长时间生产环境，但可以满足“用 python 自带命令启动并对外提供服务”的需求。
+
+注意事项（重要）：
+- python3 -m http.server 默认在当前目录以单线程方式提供静态文件，仅适合低并发场景。
+- 推荐使用 nginx 反向代理并通过 systemd 管理后台进程。
+- 为了安全与可维护性，建议使用 Nginx + Certbot 获得 TLS，并把 python server 绑定到 localhost:8000（外部访问由 nginx 代理到 80/443）。
+
+准备工作（先在本地替换占位符）：
+- <YOUR_DOMAIN> 替换为您的域名（例如 example.com 或 www.example.com）
+- <KEY_PAIR.pem> 替换为您用于 SSH 的私钥文件
+- <REPO_URL> 替换为项目的 git 仓库地址（例如 git@github.com:your/repo.git 或 https://github.com/your/repo.git）
+- 若使用 Route 53，请确保托管区域已创建并您能修改记录
+
+步骤一：创建并启动 EC2 实例
+- 推荐使用 Amazon Linux 2 / Ubuntu LTS（本示例以 Ubuntu 22.04 为例）
+- 在 EC2 控制台：
+  - 选择 AMI：Ubuntu Server 22.04 LTS
+  - 实例类型：t3.micro（测试）或按需选择
+  - 存储：默认即可
+  - 安全组：允许 `SSH (22)`，`HTTP (80)`，`HTTPS (443)`（如果您打算直接将 8000 暴露，也需允许 `8000`，但我们使用 nginx 反代，通常不需要开放 8000）
+  - 分配 Elastic IP（推荐）以便把域名指向此固定 IP
+
+步骤二：SSH 登录 EC2 并准备运行环境
+- 示例命令（在本地终端）：
+  ssh -i /path/to/<KEY_PAIR.pem> ubuntu@<EC2_PUBLIC_IP>
+
+- 在 EC2 上执行（Ubuntu）：
+  sudo apt update && sudo apt install -y git python3 python3-venv python3-pip nginx certbot python3-certbot-nginx
+
+步骤三：获取代码并放到目标目录
+- 克隆仓库（示例）：
+  cd /home/ubuntu
+  git clone <REPO_URL> omni_hemsida
+  cd omni_hemsida
+
+步骤四：测试手动启动（临时）
+- 手动启动命令（您提供的）：
+  python3 -m http.server 8000
+- 在本地浏览器访问： http://<EC2_PUBLIC_IP>:8000
+- 若能访问，说明静态服务器已正常提供内容（Ctrl+C 停止）
+
+步骤五：创建 systemd 服务以后台启动 Python 静态服务器（管理方便）
+- 创建服务文件（以 `omni-http.service` 为例）：
+  sudo tee /etc/systemd/system/omni-http.service > /dev/null <<'EOF'
+  [Unit]
+  Description=Omni static python HTTP server
+  After=network.target
+
+  [Service]
+  Type=simple
+  User=ubuntu
+  WorkingDirectory=/home/ubuntu/omni_hemsida
+  ExecStart=/usr/bin/python3 -m http.server 8000
+  Restart=on-failure
+  RestartSec=5
+
+  [Install]
+  WantedBy=multi-user.target
+  EOF
+
+- 启动并启用：
+  sudo systemctl daemon-reload
+  sudo systemctl start omni-http.service
+  sudo systemctl enable omni-http.service
+- 查看状态与日志：
+  sudo systemctl status omni-http.service
+  journalctl -u omni-http.service -f
+
+步骤六：使用 nginx 做反向代理并处理 HTTPS（推荐）
+- 创建 nginx 站点配置（示例）：
+  sudo tee /etc/nginx/sites-available/omni <<'EOF'
+  server {
+      listen 80;
+      server_name <YOUR_DOMAIN>;
+
+      location / {
+          proxy_pass http://127.0.0.1:8000;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+  }
+  EOF
+
+- 启用并检查 nginx：
+  sudo ln -s /etc/nginx/sites-available/omni /etc/nginx/sites-enabled/omni
+  sudo nginx -t
+  sudo systemctl restart nginx
+
+- 现在在浏览器访问： http://<YOUR_DOMAIN> （若域名正确解析到实例 IP）
+
+步骤七：添加 TLS（Let's Encrypt）
+- 使用 Certbot 获取证书并自动配置 nginx：
+  sudo certbot --nginx -d <YOUR_DOMAIN>
+- Certbot 会自动修改 nginx 配置以启用 HTTPS
+- 验证自动续期：
+  sudo certbot renew --dry-run
+
+步骤八：DNS（在您的域名提供商或 Route 53 中）
+- 将 A 记录（或 ALIAS）指向 EC2 的 Elastic IP（或 ALB）
+- 等待 DNS 生效（TTL 后即可访问）
+
+安全与维护建议：
+- 不要直接把 python server 暴露在公网上（即避免开放 8000 端口）；使用 nginx 作为前端代理。
+- 使用 systemd 管理服务，设置日志轮转与监控。
+- 若流量较大，考虑使用 S3 + CloudFront 或放在负载均衡器后面的多个实例。
+- 定期更新系统与依赖项，检查证书续期是否正常。
 
 ---
 
-## 自定义与开发要点
+## 何时选择哪种部署方式
 
-- 内容修改：直接编辑 HTML 文件（`index.html` / `index_V2.html`）中的文本、链接和 meta 信息。
-- 新增页面：建议放入 `pages/` 目录；引用图片时路径需使用相对上级 `../img/...`。
-- 样式修改：编辑 `css/style_v2.css`（推荐）或 `css/style.css` / 根目录 `style.css`。
-- 脚本修改：编辑 `js/script.js`。如需加入更复杂功能，可分拆模块化脚本并在 HTML 中引入。
-- 图片替换：将新的图片上传到 `img/` 对应子目录，更新 `<img>` 的 `src` 路径。
-- Favicons：位于 `img/logos/Favicons/`，替换图标时请保留多尺寸以保证兼容性。
-- 字体：可通过 Google Fonts 或本地字体文件（@font-face）引入。
-
-最佳实践：
-- 保持相对路径正确（尤其在子目录部署时）。
-- 对图片进行压缩（WebP 或合适的压缩设置）。
-- 在修改样式/脚本前，先备份或在分支中操作以便回退。
-- 使用占位：暂未完成的导航或按钮可指向 `pages/coming-soon.html`，避免 404。
-- 页面一致性：需要复用首页视觉时，可复制其 Hero 结构（`.gradient-bg`、浮动点与动画线）。
-- 平滑滚动：首页与政策页示例脚本中统一对 `a[href^="#"]` 做了偏移滚动处理，保持导航体验。
-- 国际化：已采用统一脚本方案（详见下方 i18n 章节）。
+- S3 + CloudFront：推荐用于生产静态站点（高性能、低成本、无需管理服务器）
+- EC2 + python3 -m http.server：适合快速测试或受限场景（不推荐长期生产）
+- 若需要容器化或托管服务，可考虑 ECS / Fargate 或 Elastic Beanstalk（适合需要进阶管理/扩展时）
 
 ---
 
-## 部署建议
+## 示例：常见命令汇总（可复制）
 
-适用于任何静态托管平台：
+在 EC2 上（示例）：
+- 更新并安装依赖：
+  sudo apt update && sudo apt install -y git python3 nginx certbot python3-certbot-nginx
 
-- GitHub Pages：将仓库 push，Settings → Pages，选择发布源（root 或 gh-pages）。
-- Netlify / Vercel：连接仓库或上传构建文件夹，自动发布。
-- 自托管（Nginx / Apache）：将文件放到静态网站目录并确保正确的 MIME 类型。
+- 克隆仓库：
+  git clone <REPO_URL> omni_hemsida
+  cd omni_hemsida
 
-部署注意：
-- 若使用自定义域，请配置 DNS 并在托管平台添加域名。
-- 确保使用 HTTPS（许多托管平台自动提供）。
+- 手动启动（测试）：
+  python3 -m http.server 8000
 
----
+- 使用 systemd 自动启动（见上方 systemd 单元配置）：
+  sudo systemctl daemon-reload
+  sudo systemctl start omni-http.service
+  sudo systemctl enable omni-http.service
 
-## 国际化 (i18n)
-
-当前已支持简体中文 (`zh`) 与英文 (`en`)，使用统一脚本 `js/i18n.js`，避免在本地直接通过 `file://` 打开时 `fetch` JSON 被浏览器安全策略拦截导致无法切换。
-
-关键点：
-- 每个需翻译的元素使用 `data-i18n="键名"`；输入框或文本域的占位符使用 `data-i18n-placeholder="键名"`。
-- 脚本内置一个 `DICTS` 对象存放所有语言键值对；初始化执行 `window.I18N.init()` 根据 `localStorage` (`omni_lang`) 恢复上次选择语言。
-- 切换语言调用：`window.I18N.setLang('zh')` 或 `window.I18N.setLang('en')`。
-- 如果某键在字典中缺失，保持页面原始静态文本（不会出现空白）。
-- 来自首页、政策页、占位页的按钮/下拉使用同一个脚本，无重复逻辑。
-
-新增语言（示例：西班牙语 `es`）步骤：
-1. 编辑 `js/i18n.js`，在 `DICTS` 中追加：`es: { "nav.scenes": "Escenarios", ... }`。
-2. 给需要翻译的元素补上对应 `data-i18n` / `data-i18n-placeholder` 属性键。保持命名风格（模块前缀 + 语义字段）。
-3. 在语言下拉中增加：`<button data-lang="es">Español (ES)</button>`。
-4. 调用 `window.I18N.setLang('es')` 即可切换。
-
-部署到支持 HTTP 的服务器后想改为外部 JSON：
-- 可移除内置字典并用 `fetch('/lang/es.json')` 加载；本地调试时建议仍使用内嵌或启用 `python3 -m http.server`。
-- 可扩展：URL 参数优先（如 `?lang=en`）、浏览器语言自动探测、懒加载按需语言包、合并缓存策略。
-
-常见问题排查：
-- 点击无反应：确认页面底部已经加载 `<script src="js/i18n.js"></script>`，并在 `DOMContentLoaded` 后执行了 `I18N.init()`。
-- 只有部分文字变更：检查对应元素是否已有 `data-i18n`；或键名与字典不匹配（大小写/标点）。
-- 图标按钮文本不更新：在包含图标的按钮中添加一个独立 `<span>` 包裹纯文本，脚本优先替换该 span。 
-
-## 可改进项（建议）
-
-- 图片优化：压缩并提供 WebP 版本
-- SEO：完善 meta 标签（title、description、og:*）
-- 无障碍（a11y）：添加语义化标签、alt 文本、键盘导航支持
-- 性能：合并/压缩 CSS/JS（如需），启用缓存策略
-- 分析：按需添加 Analytics（隐私合规下）
-- 国际化：若需要多语言，可参考 `OmniPOSTech-Hemsida_Copy.html` 中的 `data-lang-*` 结构；建议抽离成独立脚本。
-- 组件化：可将重复的 Header / Footer 拆分为模板片段，通过构建脚本或服务端合成。
+- 设置 nginx 反代并获取 TLS（示例）：
+  sudo nginx -t
+  sudo systemctl restart nginx
+  sudo certbot --nginx -d <YOUR_DOMAIN>
 
 ---
 
-## 贡献指南
+## 贡献与许可证
 
-1. Fork 仓库
-2. 新建分支：git checkout -b feat/your-change
-3. 提交变更：git commit -m "描述你的改动"
-4. 推送并发起 Pull Request
-
-对大改动，请先在 Issues 里描述你的计划以便讨论。
+- 若希望我同时为您创建 LICENSE（如 MIT），请回复确认我将写入 LICENSE 文件。
+- 贡献流程请参考项目内常规 Git 工作流（fork、分支、PR）。
 
 ---
 
-## 许可证
+## 需要我做的事情（可选 / 我可以帮忙的）
+- 为您生成一个 `user-data` 脚本（EC2 启动时自动拉取代码并配置 systemd/nginx/certbot）。
+- 直接创建并写入 `LICENSE`（例如 MIT）。
+- 把 README 翻译成英文版本或添加徽章、截图。
 
-仓库当前未包含 LICENSE 文件。若需开放源码并允许贡献，推荐使用 MIT 许可证。需要的话我可以为你创建并写入 LICENSE 文件。
-
-示例（简洁提示）：
-MIT License — 允许使用、复制、修改、合并、发布、分发、再授权和/或出售软件的副本，附带版权声明和许可声明。
-
----
-
-## 联系与维护
-
-- 仓库名：omni_hemsida
-- 维护者信息请参见 Git 仓库配置或项目主页
-
----
-
-## 其它备注
-
-- `OmniPOSTech-Hemsida_Copy.html` 是历史副本，清理前请确认内容不再需要。
