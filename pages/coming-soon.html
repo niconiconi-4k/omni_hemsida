@@ -26,7 +26,7 @@
       <a href="mailto:support@omnipostech.com" class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors" data-i18n="coming.contactSupport">联系支持</a>
     </div>
     <div class="mt-10">
-      <button id="langBtn" class="bg-white/10 hover:bg-white/20 px-4 py-2 !rounded-button font-medium backdrop-blur-sm">切换语言</button>
+      <button id="langBtn" class="bg-white/10 hover:bg-white/20 px-4 py-2 !rounded-button font-medium backdrop-blur-sm"></button>
     </div>
   </div>
   <script>
@@ -34,10 +34,20 @@
       if(window.I18N){
         window.I18N.init();
         const btn = document.getElementById('langBtn');
+        function updateBtnLabel() {
+          const current = localStorage.getItem('omni_lang')||'zh';
+          btn.textContent = current==='zh' ? '切换为 English' : 'Switch to 中文';
+        }
+        updateBtnLabel();
         btn.addEventListener('click',()=>{
           const current = localStorage.getItem('omni_lang')||'zh';
-            window.I18N.setLang(current==='zh'?'en':'zh');
+          const next = current==='zh'?'en':'zh';
+          window.I18N.loadLang(next).then(()=>{
+            window.I18N.setLang(next);
+            updateBtnLabel();
+          });
         });
+        window.addEventListener('storage',updateBtnLabel);
       } else {
         console.error('I18N script missing');
       }

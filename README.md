@@ -12,31 +12,50 @@
 
 ---
 
-## 目录结构（重要文件）
+## 本地预览与多语言说明
 
-- `index.html` — 主站点页面（版本 1）
-- `index_V2.html` — 主页面的另一个版本（版本 2）
-- `OmniPOSTech-Hemsida_Copy.html` — 历史或备份副本
-- `style.css` — 根目录样式文件（历史或全局用途）
-- `pages/coming-soon.html` — 占位/“即将上线”页面；所有暂未实现的链接会跳转到这里。
-- `pages/policies.html` — 独立“政策信息”页面（从首页提取，Hero 与首页视觉一致）。
-- `css/` — 样式文件夹
-  - `css/style.css`
-  - `css/style_v2.css`（推荐使用的新版样式）
-- `js/`
-  - `js/script.js` — 页面交互脚本（滚动、导航等）
-- `img/` — 图片与 logo 资源
-  - `img/logos/` — LOGO 与 favicon
-  - `img/scene/` — 演示图片
-- `.gitignore` — Git 忽略规则
-- `README.md` — 本文件
-
----
-
-## 本地预览（推荐）
+### 本地预览（推荐）
 
 方法一：直接用浏览器打开（快速）
 - 在文件管理器中双击 `index.html`，或在终端运行：
+  open index.html
+
+方法二：使用 Python 内置静态服务器（推荐，支持相对路径与多语言 JSON 加载）
+1. 进入仓库根目录：
+   cd /path/to/omni_hemsida
+2. 启动服务器：
+   python3 -m http.server 8000
+3. 打开浏览器访问：
+   http://localhost:8000/index.html
+4. 停止服务器：Ctrl+C
+
+方法三：使用 Node 工具（若有 Node.js）
+- 一次性运行（无需全局安装）：
+  npx serve .
+- 或安装并运行 serve：
+  npm i -g serve
+  serve
+
+---
+
+## 多语言与 i18n 说明
+
+本项目所有词条均存储于 `lang/en.json` 和 `lang/zh.json`，页面通过 `js/i18n.js` 自动加载对应 JSON 文件。
+
+**自动路径适配**：
+`i18n.js` 会根据自身脚本位置自动推算语言 JSON 路径，无论页面或脚本放在哪个目录都能正确加载，无需手动修改 fetch 路径。
+
+**如何切换语言**：
+- 页面右上角语言切换按钮，或下拉菜单。
+- 切换后自动加载对应 JSON 并刷新所有带 `data-i18n` 属性的内容。
+
+**注意事项**：
+- 请务必通过 HTTP 服务器访问页面，否则浏览器安全策略可能阻止 JSON 加载（file:// 下 fetch 失败）。
+- 若页面报 404，检查 lang 路径是否与实际文件结构一致。
+
+---
+
+## 如何切换页面版本
   open index.html
 
 方法二：使用 Python 内置静态服务器（推荐，支持相对路径）
