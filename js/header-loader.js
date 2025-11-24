@@ -18,10 +18,17 @@
         var currentPath = window.location.pathname;
         if(currentPath.includes('/pages/')) {
           html = html.replace(/src="img\//g, 'src="../img/');
+          // Fix all hrefs that start with "#" or point to root
+          html = html.replace(/href="#/g, 'href="../#');
+          html = html.replace(/href="\//g, 'href="../');
           html = html.replace(/href="pages\//g, 'href="../pages/');
         }
         headerContainer.innerHTML = html;
-        if(window.I18N) window.I18N.init();
+        // Re-initialize i18n after header is loaded so dropdown events are attached
+        if(window.I18N) {
+          window.I18N.init();
+          if(window.I18N.attachDropdown) window.I18N.attachDropdown();
+        }
       })
       .catch(function(){
         headerContainer.innerHTML = '<div style="background:#6b21a8;color:#fff;padding:1em;text-align:center">Header failed to load</div>';
