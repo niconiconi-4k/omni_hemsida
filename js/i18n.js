@@ -1,96 +1,531 @@
 // External JSON i18n loader; no inline fallback dictionaries.
-(function(){
+(function () {
   const STORAGE_KEY = 'omni_lang';
-  // Dynamically resolve lang path based on script location
-  function getLangPath() {
-    // Get current script src
-    const scripts = document.getElementsByTagName('script');
-    let src = '';
-    for (let i = 0; i < scripts.length; i++) {
-      if (scripts[i].src && scripts[i].src.includes('i18n.js')) {
-        src = scripts[i].src;
-        break;
-      }
+  // Inline language dictionaries for offline compatibility
+  const DICTS = {
+    zh: {
+      "nav.scenes": "应用场景",
+      "nav.features": "特点",
+      "nav.contact": "联系我们",
+      "nav.policies": "政策",
+      "nav.getStarted": "立即开始",
+      "nav.painpoints": "餐厅痛点",
+      "nav.story": "我们的故事",
+      "nav.testimonials": "客户评价",
+      "nav.pricing": "价格方案",
+      "hero.title": "让餐厅运营更轻松",
+      "hero.subtitle": "OmniPOSTech 提供 POS、在线点餐与二维码点餐一体化解决方案，适配中餐及亚洲餐厅流程。",
+      "hero.demo": "预约演示",
+      "hero.video": "观看视频",
+      "scenes.title": "应用场景",
+      "scenes.subtitle": "真实餐厅使用场景展示",
+      "features.sectionTitle": "🌟 为什么选择 OmniPOSTech？",
+      "feature.easy.title": "简单上手，轻松培训",
+      "feature.easy.text": "界面清晰、流程直观，员工经过短时间培训即可熟练使用。",
+      "feature.cn.title": "中文支持贯穿前台与后厨",
+      "feature.cn.text": "不只是收银界面支持中文，厨房单据、菜名、备注也可以中文显示。",
+      "feature.bundle.title": "一价全包：POS + 在线点餐 + 二维码点餐",
+      "feature.bundle.text": "三大核心功能，不拆开卖，不收插件费。透明价格，减少餐厅数字化成本。",
+      "feature.dinein.title": "堂食数字化方案已成熟",
+      "feature.list.pos": "收银台 POS",
+      "feature.list.qr": "店内扫码点餐",
+      "feature.list.menu": "在线菜单浏览",
+      "feature.list.kitchen": "中餐、亚洲餐厅后厨流程深度适配",
+      "feature.future.title": "未来将接入欧洲常用外卖和点餐平台",
+      "feature.future.text": "让线上订单自动同步 POS，减少人工操作。",
+      "feature.team.title": "年轻创新团队，持续快速更新",
+      "feature.team.text": "不墨守成规，不走旧路，我们的目标是让\"开餐厅\"这件事更轻松。",
+      "contact.title": "联系我们",
+      "contact.subtitle": "有任何问题？欢迎随时与我们联系",
+      "contact.name": "姓名",
+      "contact.email": "邮箱",
+      "contact.phone": "电话",
+      "contact.message": "留言内容",
+      "contact.send": "发送",
+      "policies.title": "政策信息",
+      "policies.teaser": "查看我们的退货、退款、取消、法律与促销相关详细政策说明。",
+      "policies.viewFull": "查看完整政策",
+      "policies.subtitle": "此页面展示 OmniPOSTech 与订阅、退款、取消、法律限制及促销相关的详细政策说明。",
+      "policies.readStart": "开始阅读",
+      "policies.moreFeatures": "更多功能",
+      "policy.return.title": "退货政策：",
+      "policy.return.text": "由于 OmniPOSTech 提供的是软件服务产品，通常不涉及实体商品退货。如果您购买了我们的硬件设备（如 POS 终端），可在收到商品后的 14 天内申请退货。退货商品需保持完整包装、未损坏，且附带发票或购买凭证。退货运费由客户承担，除非商品存在质量问题或配送错误。",
+      "policy.refund.title": "退款和争议政策：",
+      "policy.refund.item1": "1. 软件服务退款：对于订阅服务，客户可在购买后的 14 天内申请全额退款（前提是未使用或使用极少）。超过此期限，退款将根据使用情况部分返还。",
+      "policy.refund.item2": "2. 争议处理：客户如对账单或服务有异议，请在 30 天内通过 support@omnipostech.com 联系客服。我们将核查问题并在 7 个工作日内提供解决方案。",
+      "policy.refund.item3": "3. 特殊情况：若因服务中断、技术问题或错误计费导致的损失，OmniPOSTech 将根据实际情况提供适当补偿。",
+      "policy.cancel.title": "取消政策：",
+      "policy.cancel.text": "客户可随时取消订阅服务，但需提前 7 天通知。已支付的订阅费用通常不予退还，除非符合退款政策中列明的条件。取消后，账户将于当前计费周期结束时停止访问服务。",
+      "policy.legal.title": "法律或出口限制：",
+      "policy.legal.item1": "1. 客户在使用 OmniPOSTech 服务时需遵守瑞典及所在国家的法律法规。",
+      "policy.legal.item2": "2. 禁止将我们的软件用于违法用途，包括但不限于侵权、诈骗或洗钱等活动。",
+      "policy.legal.item3": "3. 软件及相关技术可能受到出口管制或国际贸易法规限制，客户不得将其转售或出口至受限国家或地区。",
+      "policy.promo.title": "促销条款与条件：",
+      "policy.promo.item1": "1. 所有促销活动仅限在指定时间内有效，并适用于明确列出的产品或服务。",
+      "policy.promo.item2": "2. 每个客户在同一促销活动中可能仅享受一次优惠，活动不可与其他折扣同时使用，除非特别说明。",
+      "policy.promo.item3": "3. OmniPOSTech 保留随时修改或终止促销活动的权利，且无需事先通知。",
+      "policy.promo.item4": "4. 活动条款如与法律法规冲突，以相关法律法规为准。",
+      "privacy.title": "隐私政策",
+      "privacy.effectiveDate": "生效日期：2025年11月23日",
+      "privacy.intro": "OmniPOSTech AB（“我们”）运营网站 omnipostech.se，提供在线点餐与支付服务。本隐私政策说明我们依据 GDPR 如何收集、使用、保存与保护您的个人数据。",
+      "privacy.data.title": "我们收集的数据",
+      "privacy.data.item.ip": "IP 地址、浏览器类型、设备信息",
+      "privacy.data.item.cookies": "Cookies 与使用数据",
+      "privacy.purpose.title": "处理目的",
+      "privacy.purpose.item.process": "处理餐饮订单与支付",
+      "privacy.purpose.item.support": "提供客户支持",
+      "privacy.purpose.item.confirm": "发送订单确认与更新",
+      "privacy.purpose.item.improve": "改进我们的服务",
+      "privacy.purpose.item.legal": "遵守法律义务",
+      "privacy.legal.title": "法律依据",
+      "privacy.legal.item.contract": "合同履行所必需（处理您的订单）",
+      "privacy.legal.item.interest": "正当利益（改进服务）",
+      "privacy.legal.item.consent": "同意（用于营销与 Cookies）",
+      "privacy.legal.item.compliance": "法律合规",
+      "privacy.share.title": "数据共享",
+      "privacy.share.intro": "我们可能与以下对象共享数据：",
+      "privacy.share.payment": "支付处理方：Zettle by PayPal",
+      "privacy.share.hosting": "托管与分析服务提供商（如：主机或分析工具）",
+      "privacy.share.restaurant": "餐厅合作伙伴用于订单履行",
+      "privacy.share.authorities": "依法需提供时的相关监管机构",
+      "privacy.retention.title": "数据保留",
+      "privacy.retention.text": "我们仅在实现上述目的所需的期间或受瑞典法律要求的期间内保留您的数据。",
+      "privacy.rights.title": "您的权利 (GDPR)",
+      "privacy.rights.item.access": "访问您的个人数据",
+      "privacy.rights.item.correct": "更正或删除您的数据",
+      "privacy.rights.item.withdraw": "撤回同意",
+      "privacy.rights.item.portability": "请求数据可携性",
+      "privacy.rights.item.complaint": "向 IMY 提出投诉",
+      "privacy.contact.title": "联系方式",
+      "privacy.contact.address": "Brunnshögsgatan 6, 22484 Lund, Sweden",
+      "privacy.contact.org": "组织编号：559532-2966",
+      "privacy.contact.email": "邮箱：info@omnipostech.se / support@omnipostech.se",
+      "cookie.title": "Cookie 政策",
+      "cookie.what.title": "什么是 Cookie?",
+      "cookie.what.text": "Cookie 是当您访问我们的网站时存储在设备上的小型文本文件，它们帮助我们提升性能与用户体验。",
+      "cookie.types.title": "我们使用的 Cookie 类型",
+      "cookie.types.essential": "必要 Cookie：登录、下单流程所需",
+      "cookie.types.analytics": "分析 Cookie：帮助我们了解网站使用情况",
+      "cookie.types.functional": "功能性 Cookie：记住您的偏好设置",
+      "cookie.manage.title": "Cookie 管理",
+      "cookie.manage.text1": "首次访问时我们会征求您对非必要 Cookie 的同意。",
+      "cookie.manage.text2": "您可以在浏览器设置中管理或删除 Cookie；建议使用合规 Cookie 授权工具（如 CookieBot）。",
+      "tos.title": "服务条款",
+      "tos.lastUpdated": "最近更新日期：2025年11月23日",
+      "tos.intro": "这些服务条款规范您对 omnipostech.se 的访问与使用。使用本平台即表示您同意这些条款。",
+      "tos.account.title": "账户",
+      "tos.account.item.accurate": "您必须提供准确的信息。",
+      "tos.account.item.security": "您需对账号登录安全负责。",
+      "tos.account.item.suspension": "若违反条款或滥用服务我们可暂停账户。",
+      "tos.orders.title": "订单与支付",
+      "tos.orders.item.confirm": "订单仅在通过 Zettle 成功支付后确认。",
+      "tos.orders.item.vat": "价格含增值税（除非另有说明）。",
+      "tos.orders.item.receipt": "您将收到电子邮件数字收据。",
+      "tos.cancellationRefund.link": "详见下方取消与退款政策。",
+      "tos.ip.title": "知识产权",
+      "tos.ip.text": "网站全部内容归 OmniPOSTech 或其许可方所有。",
+      "tos.liability.title": "责任免责声明",
+      "tos.liability.text": "因技术问题或第三方系统导致的延迟、错误或中断我们不承担责任。",
+      "tos.law.title": "适用法律",
+      "tos.law.text": "本条款受瑞典法律管辖，争议由瑞典法院解决。",
+      "cancelRefund.title": "取消与退款政策",
+      "cancelRefund.intro": "我们希望您对订单满意，如有问题请尽快联系我们。",
+      "cancelRefund.cancellations.title": "取消",
+      "cancelRefund.cancellations.item.before": "您可在餐厅“接受”订单之前取消。",
+      "cancelRefund.cancellations.item.prepared": "若订单已备餐或已发出，可能无法取消。",
+      "cancelRefund.refunds.title": "退款",
+      "cancelRefund.refunds.item.method": "经批准的退款将通过原支付方式（Zettle）处理。",
+      "cancelRefund.refunds.item.time": "退款可能在 3–7 个工作日内到账，取决于您的银行。",
+      "cancelRefund.contact.title": "退款联系渠道",
+      "cancelRefund.contact.email": "邮箱：info@omnipostech.se / support@omnipostech.se",
+      "cancelRefund.contact.phone": "电话：+46000000000",
+      "cancelRefund.contact.hours": "工作时间：周一–周五 10:00–18:00",
+      "policy.return.effectiveDate": "生效日期：2025年11月23日",
+      "policy.refund.effectiveDate": "生效日期：2025年11月23日",
+      "policy.cancel.effectiveDate": "生效日期：2025年11月23日",
+      "policy.legal.effectiveDate": "生效日期：2025年11月23日",
+      "policy.promo.effectiveDate": "生效日期：2025年11月23日",
+      "cookie.effectiveDate": "生效日期：2025年11月23日",
+      "tos.effectiveDate": "生效日期：2025年11月23日",
+      "cancelRefund.effectiveDate": "生效日期：2025年11月23日",
+      "footer.slogan": "为中餐及亚洲餐厅提供一体化 POS 解决方案",
+      "footer.brand": "OmniPOSTech",
+      "footer.address": "Brunnshögsgatan 6, 224 71 Lund, Sweden",
+      "footer.phone": "+46723410704",
+      "footer.email": "support@omnipostech.com",
+      "footer.copyright": "© 2025 OmniPOSTech. All rights reserved.",
+      "footer.quick": "快速链接",
+      "footer.quick.scenes": "应用场景",
+      "footer.quick.features": "特点",
+      "footer.quick.contact": "联系我们",
+      "footer.quick.policies": "政策",
+      "footer.quick.painpoints": "餐厅痛点",
+      "footer.quick.story": "我们的故事",
+      "footer.quick.testimonials": "客户评价",
+      "footer.quick.pricing": "价格方案",
+      "footer.contact": "联系方式",
+      "footer.news": "新闻订阅",
+      "footer.news.text": "订阅我们的新闻，获取最新更新和优惠",
+      "footer.email.placeholder": "您的邮箱",
+      "footer.subscribe": "订阅",
+      "coming.title": "页面即将上线",
+      "coming.text": "该功能或内容正在准备中，敬请期待。我们会很快更新此页面。",
+      "coming.backHome": "返回首页",
+      "coming.contactSupport": "联系支持",
+      "footer.backHome": "返回首页",
+      "cta.title": "准备好让餐厅管理更轻松了吗？",
+      "cta.subtitle": "立即体验 OmniPOSTech，让您的餐厅运营更高效",
+      "cta.trial": "开始免费试用",
+      "cta.sales": "联系销售",
+      "pain.title": "餐厅数字化的痛点",
+      "pain.subtitle": "我们了解餐厅老板和员工的真实困扰",
+      "pain.complex.title": "系统太复杂，新员工学不会",
+      "pain.complex.desc": "传统POS和点餐系统界面繁琐，培训周期长，影响餐厅效率。",
+      "pain.english.title": "英文界面找半天，容易点错",
+      "pain.english.desc": "员工不熟悉英文菜单，操作易出错，影响顾客体验。",
+      "pain.budget.title": "小店预算有限，现有系统门槛太高",
+      "pain.budget.desc": "高昂的系统费用和复杂的硬件要求让小餐厅望而却步。",
+      "pain.swedenpay.title": "瑞典支付流程复杂",
+      "pain.swedenpay.desc": "本地支付方式多，流程繁琐，顾客和员工都容易困惑。",
+      "pain.summary": "OmniPOSTech 为此而生，一站式解决餐厅数字化难题！",
+      "story.title": "我们的故事",
+      "story.subtitle": "一段属于华人创业者的真实经历",
+      "story.full": "我们是一支在瑞典打拼的华人创业团队。最初，我们只是几个朋友，大家都在餐厅工作或有亲戚在餐饮业。每次聚会，餐厅老板总会抱怨：系统太复杂，新员工学不会，英文界面找半天，点错单，顾客不满。小店预算有限，现有系统门槛太高，瑞典支付流程又复杂，大家都很头疼。我们意识到，这些痛点其实是机会。于是，我们决定自己动手做一套真正适合华人餐厅的数字化系统。冬天的风里，我们顶着雪跑去修打印机，厨房旁边调系统，和老板、员工一起反复打磨每一个细节。我们用心做给“自己人”真正用得顺的系统，让每一家餐厅都能安心经营。OmniPOSTech，不仅是技术，更是情感和陪伴。我们希望和每一位餐厅老板一起成长，把温度和信任带进数字化时代。",
+      "story.summary": "这不仅是技术，更是情感和陪伴。OmniPOSTech，和你一起成长。",
+      "testimonials_title": "客户评价 / 合作店展示",
+      "testimonials_subtitle": "真实合作餐厅老板的心声",
+      "testimonials_1_text": "很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。",
+      "testimonials_1_boss": "冯老板",
+      "testimonials_1_restaurant": "",
+      "testimonials_2_text": "真是太棒的软件了，现在我再也不会在付款收银部分出错了。",
+      "testimonials_2_boss": "马老板",
+      "testimonials_2_restaurant": "",
+      "testimonials_3_text": "很棒的软件，非常容易上手使用。",
+      "testimonials_3_boss": "王老板",
+      "testimonials_3_restaurant": "",
+      "pricing_title": "价格方案",
+      "pricing_subtitle": "灵活套餐，满足不同餐厅需求",
+      "pricing_basic_title": "基础版",
+      "pricing_basic_desc": "小店适用",
+      "pricing_basic_price": "敬请期待",
+      "pricing_pro_title": "进阶版",
+      "pricing_pro_desc": "快餐适用",
+      "pricing_pro_price": "敬请期待",
+      "pricing_adv_title": "专业版",
+      "pricing_adv_desc": "扩展需求",
+      "pricing_adv_price": "敬请期待",
+      "comments.bg.alt1": "Customer testimonial background",
+      "comments.bg.alt2": "Customer testimonial background",
+      "comments.bg.alt3": "Customer testimonial background",
+      "comments.boss.alt1": "Boss Feng portrait",
+      "comments.boss.alt2": "Boss Ma portrait",
+      "comments.boss.alt3": "Boss Wang portrait",
+      "pricing.table.basic": "Basic",
+      "pricing.table.pro": "Pro",
+      "pricing.table.adv": "Advanced",
+      "contact.form.name": "Name",
+      "contact.form.email": "Email",
+      "contact.form.phone": "Phone",
+      "contact.form.message": "Message",
+      "contact.form.send": "Send",
+      "footer.social.facebook": "Facebook (Coming Soon)",
+      "footer.social.twitter": "Twitter (Coming Soon)",
+      "footer.social.instagram": "Instagram (Coming Soon)",
+      "footer.social.linkedin": "LinkedIn (Coming Soon)"
+    },
+    en: {
+      "nav.scenes": "Scenes",
+      "nav.features": "Features",
+      "nav.painpoints": "Pain Points",
+      "nav.story": "Our Story",
+      "nav.testimonials": "Testimonials",
+      "nav.pricing": "Pricing",
+      "footer.quick.testimonials": "Testimonials",
+      "footer.quick.pricing": "Pricing",
+      "nav.contact": "Contact",
+      "nav.policies": "Policies",
+      "nav.getStarted": "Get Started",
+      "hero.title": "Make Restaurant Operations Easier",
+      "hero.subtitle": "OmniPOSTech provides an integrated POS, online ordering and QR table ordering solution adapted for Chinese & Asian restaurant workflows.",
+      "hero.demo": "Book a Demo",
+      "hero.video": "Watch Video",
+      "scenes.title": "Use Cases",
+      "scenes.subtitle": "Real restaurant scenario showcase",
+      "features.sectionTitle": "🌟 Why Choose OmniPOSTech?",
+      "feature.easy.title": "Easy Onboarding, Fast Training",
+      "feature.easy.text": "Clear interface and intuitive flow. Staff become proficient after short training.",
+      "feature.cn.title": "Chinese Support Across Front & Kitchen",
+      "feature.cn.text": "Kitchen tickets, dish names and notes can all display in Chinese – not just the POS screen.",
+      "feature.bundle.title": "One Price: POS + Online Ordering + QR Ordering",
+      "feature.bundle.text": "Three core functions bundled. No plugin fees, transparent pricing to lower digitization costs.",
+      "feature.dinein.title": "Mature Dine‑In Digital Solution",
+      "feature.list.pos": "Counter POS",
+      "feature.list.qr": "In‑Store QR Ordering",
+      "feature.list.menu": "Online Menu Browsing",
+      "feature.list.kitchen": "Workflow deeply adapted to Chinese & Asian kitchens",
+      "feature.future.title": "Future: Integrations with Popular EU Delivery Platforms",
+      "feature.future.text": "Online orders auto sync to POS, reducing manual work.",
+      "feature.team.title": "Young Innovative Team, Rapid Updates",
+      "feature.team.text": "We avoid outdated paths; our goal is to make ‘running a restaurant’ easier.",
+      "contact.title": "Contact Us",
+      "contact.subtitle": "Any questions? Reach out anytime.",
+      "contact.name": "Name",
+      "contact.email": "Email",
+      "contact.phone": "Phone",
+      "contact.message": "Message",
+      "contact.send": "Send",
+      "policies.title": "Policy Information",
+      "policies.teaser": "View detailed explanations of our return, refund, cancellation, legal and promotion related policies.",
+      "policies.viewFull": "View Full Policies",
+      "policies.subtitle": "This page presents detailed OmniPOSTech policies related to subscription, refunds, cancellations, legal restrictions and promotions.",
+      "policies.readStart": "Start Reading",
+      "policies.moreFeatures": "More Features",
+      "policy.return.title": "Return Policy:",
+      "policy.return.text": "As OmniPOSTech provides software services, physical product returns are rarely involved. If you purchased our hardware (e.g. POS terminal) you may request a return within 14 days of receipt. Returned items must be in original packaging, undamaged and include proof of purchase. Return shipping is borne by the customer unless there is a quality or fulfillment error.",
+      "policy.refund.title": "Refund & Dispute Policy:",
+      "policy.refund.item1": "1. Software Service Refund: For subscriptions, customers may request a full refund within 14 days of purchase (provided usage is none or minimal). After that period partial refunds may be granted based on usage.",
+      "policy.refund.item2": "2. Dispute Handling: If you have billing or service objections, contact support@omnipostech.com within 30 days. We respond with a solution within 7 business days.",
+      "policy.refund.item3": "3. Special Cases: In cases of service interruption, technical faults or billing errors, OmniPOSTech provides appropriate compensation based on impact.",
+      "policy.cancel.title": "Cancellation Policy:",
+      "policy.cancel.text": "You may cancel a subscription at any time but must give 7 days notice. Paid fees are normally non‑refundable unless qualifying under refund terms. Access ends at the close of the current billing cycle.",
+      "policy.legal.title": "Legal or Export Restrictions:",
+      "policy.legal.item1": "1. Customers must comply with Swedish law and their local jurisdiction when using the service.",
+      "policy.legal.item2": "2. The software may not be used for illegal purposes including infringement, fraud or money laundering.",
+      "policy.legal.item3": "3. Software/technology may be subject to export or trade controls; do not resell or export to restricted regions.",
+      "policy.promo.title": "Promotion Terms & Conditions:",
+      "policy.promo.item1": "1. Promotions are valid only within the stated time frame for listed products/services.",
+      "policy.promo.item2": "2. Each customer may use a promotion once; offers cannot be combined unless stated.",
+      "policy.promo.item3": "3. OmniPOSTech may modify or terminate promotions anytime without prior notice.",
+      "policy.promo.item4": "4. If terms conflict with applicable laws, the laws prevail.",
+      "privacy.title": "Privacy Policy",
+      "privacy.effectiveDate": "Effective Date: 2025-11-23",
+      "privacy.intro": "OmniPOSTech AB (\"we\") operates omnipostech.se providing online food ordering and payment services. This Privacy Policy explains how we collect, use, store and protect your personal data under GDPR.",
+      "privacy.data.title": "Data We Collect",
+      "privacy.data.item.ip": "IP address, browser type, device information",
+      "privacy.data.item.cookies": "Cookies and usage data",
+      "privacy.purpose.title": "Purpose of Processing",
+      "privacy.purpose.item.process": "Process food orders and payments",
+      "privacy.purpose.item.support": "Provide customer support",
+      "privacy.purpose.item.confirm": "Send order confirmations and updates",
+      "footer.contact": "Contact",
+      "footer.news": "Newsletter Subscription",
+      "privacy.purpose.item.improve": "Improve our services",
+      "privacy.purpose.item.legal": "Comply with legal obligations",
+      "privacy.legal.title": "Legal Basis",
+      "privacy.legal.item.contract": "Contractual necessity (to process your orders)",
+      "privacy.legal.item.interest": "Legitimate interest (to improve service)",
+      "privacy.legal.item.consent": "Consent (for marketing and cookies)",
+      "privacy.legal.item.compliance": "Legal compliance",
+      "privacy.share.title": "Data Sharing",
+      "privacy.share.intro": "We may share data with:",
+      "privacy.share.payment": "Payment processor: Zettle by PayPal",
+      "privacy.share.hosting": "Hosting & analytics providers (e.g. hosting or analytics tools)",
+      "privacy.share.restaurant": "Restaurant partners for order fulfillment",
+      "privacy.share.authorities": "Authorities when legally required",
+      "privacy.retention.title": "Data Retention",
+      "privacy.retention.text": "We store data only as long as necessary for the stated purposes or as required by Swedish law.",
+      "privacy.rights.title": "Your Rights (GDPR)",
+      "privacy.rights.item.access": "Access your personal data",
+      "privacy.rights.item.correct": "Correct or delete your data",
+      "privacy.rights.item.withdraw": "Withdraw consent",
+      "privacy.rights.item.portability": "Request data portability",
+      "privacy.rights.item.complaint": "Lodge a complaint with IMY",
+      "privacy.contact.title": "Contact",
+      "privacy.contact.address": "Brunnshögsgatan 6, 22484 Lund, Sweden",
+      "privacy.contact.org": "Org. No: 559532-2966",
+      "privacy.contact.email": "Email: info@omnipostech.se, support@omnipostech.se",
+      "cookie.title": "Cookie Policy",
+      "cookie.what.title": "What Are Cookies?",
+      "cookie.what.text": "Cookies are small text files stored on your device when you visit our site. They help improve performance and user experience.",
+      "cookie.types.title": "Types of Cookies We Use",
+      "cookie.types.essential": "Essential cookies: required for login, order process",
+      "cookie.types.analytics": "Analytics cookies: help us understand usage",
+      "cookie.types.functional": "Functional cookies: remember your preferences",
+      "cookie.manage.title": "Managing Cookies",
+      "cookie.manage.text1": "On first visit we ask for consent to non‑essential cookies.",
+      "cookie.manage.text2": "You can manage or delete cookies via browser settings; we recommend a consent tool (e.g. CookieBot).",
+      "tos.title": "Terms of Service",
+      "tos.lastUpdated": "Last Updated: 2025-11-23",
+      "tos.intro": "These Terms govern your access and use of omnipostech.se. By using the platform you agree to them.",
+      "tos.account.title": "Account",
+      "tos.account.item.accurate": "You must provide accurate information.",
+      "tos.account.item.security": "You are responsible for keeping login secure.",
+      "tos.account.item.suspension": "We may suspend accounts that violate terms or abuse the service.",
+      "tos.orders.title": "Orders & Payments",
+      "tos.orders.item.confirm": "Orders are confirmed only upon successful payment via Zettle.",
+      "tos.orders.item.vat": "Prices include VAT unless otherwise stated.",
+      "tos.orders.item.receipt": "You receive a digital receipt by email.",
+      "tos.cancellationRefund.link": "See Cancellation & Refund Policy below.",
+      "tos.ip.title": "Intellectual Property",
+      "tos.ip.text": "All website content is the property of OmniPOSTech or its licensors.",
+      "tos.liability.title": "Liability Disclaimer",
+      "tos.liability.text": "We are not responsible for delays, errors or interruptions due to technical issues or third‑party systems.",
+      "tos.law.title": "Governing Law",
+      "tos.law.text": "These Terms are governed by Swedish law. Disputes are settled in Swedish courts.",
+      "cancelRefund.title": "Cancellation and Refund Policy",
+      "cancelRefund.intro": "We want you to be satisfied with your order. If there is any issue, contact us promptly.",
+      "cancelRefund.cancellations.title": "Cancellations",
+      "cancelRefund.cancellations.item.before": "You may cancel your order before it is accepted by the restaurant.",
+      "cancelRefund.cancellations.item.prepared": "If the order is already prepared or dispatched, cancellation may not be possible.",
+      "cancelRefund.refunds.title": "Refunds",
+      "cancelRefund.refunds.item.method": "Approved refunds are processed via the original payment method through Zettle.",
+      "cancelRefund.refunds.item.time": "Refunds may take 3–7 business days to appear depending on your bank.",
+      "cancelRefund.contact.title": "Contact for Refund Requests",
+      "cancelRefund.contact.email": "Email: info@omnipostech.se, support@omnipostech.se",
+      "cancelRefund.contact.phone": "Phone: +46000000000",
+      "cancelRefund.contact.hours": "Hours: Mon–Fri, 10:00–18:00",
+      "policy.return.effectiveDate": "Effective Date: 2025-11-23",
+      "policy.refund.effectiveDate": "Effective Date: 2025-11-23",
+      "policy.cancel.effectiveDate": "Effective Date: 2025-11-23",
+      "policy.legal.effectiveDate": "Effective Date: 2025-11-23",
+      "policy.promo.effectiveDate": "Effective Date: 2025-11-23",
+      "cookie.effectiveDate": "Effective Date: 2025-11-23",
+      "tos.effectiveDate": "Effective Date: 2025-11-23",
+      "cancelRefund.effectiveDate": "Effective Date: 2025-11-23",
+      "footer.slogan": "Integrated POS solution for Chinese & Asian restaurants",
+      "footer.brand": "OmniPOSTech",
+      "footer.address": "Brunnshögsgatan 6, 224 71 Lund, Sweden",
+      "footer.phone": "+46723410704",
+      "footer.email": "support@omnipostech.com",
+      "footer.copyright": "© 2025 OmniPOSTech. All rights reserved.",
+      "footer.quick": "Quick Links",
+      "footer.quick.scenes": "Scenes",
+      "footer.quick.features": "Features",
+      "footer.quick.contact": "Contact",
+      "footer.quick.policies": "Policies",
+      "footer.quick.painpoints": "Pain Points",
+      "footer.quick.story": "Our Story",
+      "footer.news.text": "Subscribe for latest updates and offers",
+      "footer.email.placeholder": "Your email",
+      "footer.subscribe": "Subscribe",
+      "coming.title": "Coming Soon",
+      "coming.text": "Feature or content in preparation. Stay tuned for updates.",
+      "coming.backHome": "Back to Home",
+      "coming.contactSupport": "Contact Support",
+      "footer.backHome": "Back to Home",
+      "cta.title": "Ready to make restaurant management easier?",
+      "cta.subtitle": "Experience OmniPOSTech now and make your restaurant operations more efficient",
+      "cta.trial": "Start Free Trial",
+      "cta.sales": "Contact Sales",
+      "pain.title": "Pain Points of Restaurant Digitalization",
+      "pain.subtitle": "We understand the real challenges faced by restaurant owners and staff",
+      "pain.complex.title": "Systems are too complex, new staff can't learn",
+      "pain.complex.desc": "Traditional POS and ordering systems are complicated, long training cycles hurt efficiency.",
+      "pain.english.title": "English interface is hard to navigate, easy to make mistakes",
+      "pain.english.desc": "Staff unfamiliar with English menus make errors, hurting customer experience.",
+      "pain.budget.title": "Small restaurant budget, high system barriers",
+      "pain.budget.desc": "Expensive systems and complex hardware requirements keep small restaurants out.",
+      "pain.swedenpay.title": "Swedish payment process is complicated",
+      "pain.swedenpay.desc": "Local payment methods are many and confusing for both customers and staff.",
+      "pain.summary": "OmniPOSTech was born for this—one-stop solution for restaurant digitalization!",
+      "story.title": "Our Story",
+      "story.subtitle": "A true journey of Chinese entrepreneurs",
+      "story.full": "We are a Chinese startup team striving in Sweden. It all began with a few friends, most of us working in restaurants or having family in the business. Every gathering, restaurant owners would complain: systems are too complex, new staff can't learn, English interfaces are hard to navigate, mistakes happen, customers get frustrated. Small restaurants have limited budgets, existing systems are expensive, and Swedish payment processes are confusing. We realized these pain points were actually opportunities. So we decided to build a digital system truly suited for Chinese restaurants. In the winter wind, we braved the snow to fix printers, tuned systems by the kitchen, and worked side by side with owners and staff to polish every detail. We build systems with heart, truly usable for our own community, so every restaurant can operate with peace of mind. OmniPOSTech is not just technology, but emotion and companionship. We hope to grow together with every restaurant owner, bringing warmth and trust into the digital age.",
+      "story.summary": "This is not just technology, but emotion and companionship. OmniPOSTech grows together with you.",
+      "testimonials_title": "Testimonials / Partner Restaurants",
+      "testimonials_subtitle": "Real voices from our partner restaurant owners",
+      "testimonials_1_text": "Great software! I used to be totally confused every month when doing accounts and taxes, always working late into the night. Now with Omni, it's so much easier and I don't mess things up anymore.",
+      "testimonials_1_boss": "Boss Feng",
+      "testimonials_1_restaurant": "",
+      "testimonials_2_text": "This is truly amazing software. I never make mistakes at the payment and cashier part anymore.",
+      "testimonials_2_boss": "Boss Ma",
+      "testimonials_2_restaurant": "",
+      "testimonials_3_text": "Wonderful software, very easy to use and get started.",
+      "testimonials_3_boss": "Boss Wang",
+      "testimonials_3_restaurant": "",
+      "pricing_title": "Pricing Plans",
+      "pricing_subtitle": "Flexible packages for every restaurant need",
+      "pricing_basic_title": "Basic",
+      "pricing_basic_desc": "For small restaurants",
+      "pricing_basic_price": "Coming soon",
+      "pricing_pro_title": "Pro",
+      "pricing_pro_desc": "For fast food",
+      "pricing_pro_price": "Coming soon",
+      "pricing_adv_title": "Advanced",
+      "pricing_adv_desc": "For extended needs",
+      "pricing_adv_price": "Coming soon",
+      "comments.bg.alt1": "Customer testimonial background",
+      "comments.bg.alt2": "Customer testimonial background",
+      "comments.bg.alt3": "Customer testimonial background",
+      "comments.boss.alt1": "Boss Feng portrait",
+      "comments.boss.alt2": "Boss Ma portrait",
+      "comments.boss.alt3": "Boss Wang portrait",
+      "pricing.table.basic": "Basic",
+      "pricing.table.pro": "Pro",
+      "pricing.table.adv": "Advanced",
+      "contact.form.name": "Name",
+      "contact.form.email": "Email",
+      "contact.form.phone": "Phone",
+      "contact.form.message": "Message",
+      "contact.form.send": "Send",
+      "footer.social.facebook": "Facebook (Coming Soon)",
+      "footer.social.twitter": "Twitter (Coming Soon)",
+      "footer.social.instagram": "Instagram (Coming Soon)",
+      "footer.social.linkedin": "LinkedIn (Coming Soon)"
     }
-    if (!src) return 'lang';
-    // Remove filename, get directory
-    const base = src.substring(0, src.lastIndexOf('/'));
-    // If script is in /js/, lang is likely ../lang
-    if (base.endsWith('/js')) return '../lang';
-    // If script is in /pages/js/, lang is likely ../../lang
-    if (base.endsWith('/pages/js')) return '../../lang';
-    // Otherwise, try lang relative to script
-    return base + '/../lang';
-  }
+  };
+  let LOADED = {};
 
-  const LANG_PATH = getLangPath();
-  const LOAD_TIMEOUT_MS = 5000;
-  const LOADED = {};
-
-  function applyTranslations(dict){
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
+  function applyTranslations(dict) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if(!key) return;
-      if(!(key in dict)) return;
-      if(el.childElementCount>0){
-        const span = Array.from(el.children).reverse().find(c=>c.tagName==='SPAN' && c.children.length===0);
-        if(span) span.textContent = dict[key]; else el.textContent = dict[key];
+      if (!key) return;
+      if (!(key in dict)) return;
+      if (el.childElementCount > 0) {
+        const span = Array.from(el.children).reverse().find(c => c.tagName === 'SPAN' && c.children.length === 0);
+        if (span) span.textContent = dict[key]; else el.textContent = dict[key];
       } else el.textContent = dict[key];
     });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
-      if(key && key in dict) el.setAttribute('placeholder', dict[key]);
+      if (key && key in dict) el.setAttribute('placeholder', dict[key]);
     });
   }
 
-  function loadLang(lang){
-    if(LOADED[lang]) return Promise.resolve(LOADED[lang]);
-    if(location.protocol === 'file:'){
-      console.error('Cannot fetch translation JSON under file://. Run a local server (python3 -m http.server)');
-      return Promise.resolve({});
+  function loadLang(lang) {
+    // Use static dictionary, no fetch
+    if (LOADED[lang]) return Promise.resolve(LOADED[lang]);
+    if (DICTS[lang]) {
+      LOADED[lang] = DICTS[lang];
+      return Promise.resolve(DICTS[lang]);
     }
-    const url = `${LANG_PATH}/${lang}.json`;
-    const controller = new AbortController();
-    const timeout = setTimeout(()=>controller.abort(), LOAD_TIMEOUT_MS);
-    return fetch(url, { cache:'no-store', signal:controller.signal })
-      .then(r=>{ clearTimeout(timeout); if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-      .then(json=>{ LOADED[lang] = json; return json; })
-      .catch(err=>{ console.error(`Failed to load ${url}:`, err); return {}; });
+    console.warn('Language not found:', lang);
+    return Promise.resolve({});
   }
 
-  function setLang(lang){
+  function setLang(lang) {
     const dict = LOADED[lang];
-    if(!dict){ console.warn('Language not loaded:', lang); return; }
+    if (!dict) { console.warn('Language not loaded:', lang); return; }
     localStorage.setItem(STORAGE_KEY, lang);
     applyTranslations(dict);
     const label = document.getElementById('currentLangLabel');
-    if(label) label.textContent = lang==='zh' ? '中文' : 'English';
+    if (label) label.textContent = lang === 'zh' ? '中文' : 'English';
     const toggleBtn = document.getElementById('langBtn');
-    if(toggleBtn && !document.getElementById('currentLangLabel')){
-      toggleBtn.textContent = lang==='zh' ? '切换语言' : 'Switch Language';
+    if (toggleBtn && !document.getElementById('currentLangLabel')) {
+      toggleBtn.textContent = lang === 'zh' ? '切换语言' : 'Switch Language';
     }
   }
 
-  function attachDropdown(){
+  function attachDropdown() {
     const dropdown = document.getElementById('langDropdown');
     const btn = document.getElementById('langBtn');
-    if(!btn) return;
-    btn.addEventListener('click',e=>{e.stopPropagation();dropdown&&dropdown.classList.toggle('hidden');});
-    dropdown?.querySelectorAll('[data-lang]').forEach(b=>{
-      b.addEventListener('click',()=>{
+    if (!btn) return;
+    btn.addEventListener('click', e => { e.stopPropagation(); dropdown && dropdown.classList.toggle('hidden'); });
+    dropdown?.querySelectorAll('[data-lang]').forEach(b => {
+      b.addEventListener('click', () => {
         const lang = b.getAttribute('data-lang');
-        if(lang){ loadLang(lang).then(()=>setLang(lang)); }
+        if (lang) { loadLang(lang).then(() => setLang(lang)); }
         dropdown.classList.add('hidden');
       });
     });
-    document.addEventListener('click',e=>{ if(dropdown && !btn.contains(e.target)) dropdown.classList.add('hidden'); });
+    document.addEventListener('click', e => { if (dropdown && !btn.contains(e.target)) dropdown.classList.add('hidden'); });
   }
 
-  function init(){
-    const initial = localStorage.getItem(STORAGE_KEY)||'zh';
-    loadLang(initial).then(()=>setLang(initial));
+  function init() {
+    const initial = localStorage.getItem(STORAGE_KEY) || 'zh';
+    loadLang(initial).then(() => setLang(initial));
     attachDropdown();
   }
 
-  window.I18N = { init, setLang, loadLang };
+  window.I18N = { init, setLang, loadLang, attachDropdown };
 })();

@@ -16,8 +16,38 @@
   <style>.gradient-bg{background:linear-gradient(135deg,#6b21a8 0%,#9333ea 100%);}</style>
 </head>
 <body class="min-h-screen">
-  <!-- Header Section will be loaded by JS -->
-  <script src="../js/header-loader.js"></script>
+  <!-- Static Header -->
+  <header class="fixed top-0 left-0 right-0 bg-[#6b21a8] shadow-md z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="../index.html" id="homeLogo" class="flex items-center space-x-2">
+        <img src="../img/logos/png/logo_no_bg2.png" alt="OmniPOSTech Logo" class="h-16 object-contain">
+        <span class="text-white font-semibold text-xl" data-i18n="footer.brand">OmniPOSTech</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8" id="mainNav">
+        <a href="../#carousel" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.scenes">Scenes</a>
+        <a href="../#features" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.features">Features</a>
+        <a href="../#painpoints" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.painpoints">Pain Points</a>
+        <a href="../#ourstory" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.story">Our Story</a>
+        <a href="../#testimonials" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.testimonials">Testimonials</a>
+        <a href="../#pricing" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.pricing">Pricing</a>
+        <a href="../#contact" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.contact">Contact</a>
+        <button class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" data-i18n="nav.getStarted">Get Started</button>
+        <div class="relative" id="langSelector">
+          <button class="flex items-center space-x-1 text-white hover:text-white/80 font-medium" id="langBtn">
+            <span id="currentLangLabel">English</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </button>
+          <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 hidden" id="langDropdown">
+            <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="zh">中文 (ZH)</button>
+            <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="en">English (EN)</button>
+          </div>
+        </div>
+      </nav>
+      <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
+        <i class="ri-menu-line text-white ri-lg"></i>
+      </button>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="pt-24 relative overflow-hidden">
@@ -158,7 +188,67 @@
   </main>
 
   <!-- Footer (简化版) -->
-  <script src="../js/footer-loader.js"></script>
+  <footer class="bg-[#6b21a8] mt-24 text-white">
+    <div class="container mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div>
+        <div class="flex items-center mb-6">
+          <img src="../img/logos/png/logo_no_bg2.png" alt="OmniPOSTech" class="h-12 object-contain">
+          <span class="font-semibold text-xl ml-2" data-i18n="footer.brand">OmniPOSTech</span>
+        </div>
+        <p class="mb-6" data-i18n="footer.slogan">为中餐及亚洲餐厅提供一体化 POS 解决方案</p>
+        <a href="../index.html" class="text-white/80 hover:text-white underline underline-offset-4" data-i18n="footer.backHome">返回首页</a>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4" data-i18n="footer.quick">快速链接</h3>
+        <ul class="space-y-2">
+          <li><a href="../#carousel" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.scenes">应用场景</a></li>
+          <li><a href="../#features" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.features">特点</a></li>
+          <li><a href="../#painpoints" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.painpoints">餐厅痛点</a></li>
+          <li><a href="../#ourstory" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.story">我们的故事</a></li>
+          <li><a href="../#testimonials" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.testimonials">客户评价</a></li>
+          <li><a href="../#pricing" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.pricing">价格方案</a></li>
+          <li><a href="../#contact" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.contact">联系我们</a></li>
+          <li><a href="../#policies" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.policies">政策</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4" data-i18n="footer.contact">联系方式</h3>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-white/80" data-i18n="footer.address">Brunnshögsgatan 6, 224 71 Lund, Sweden</span>
+          </li>
+          <li class="flex items-start">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+              <i class="ri-phone-line"></i>
+            </div>
+            <span class="text-white/80" data-i18n="footer.phone">+46723410704</span>
+          </li>
+          <li class="flex items-start">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center mr-2">
+              <i class="ri-mail-line"></i>
+            </div>
+            <span class="text-white/80" data-i18n="footer.email">support@omnipostech.com</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4" data-i18n="footer.news">新闻订阅</h3>
+        <p class="text-white/80 mb-4" data-i18n="footer.news.text">订阅我们的新闻，获取最新更新和优惠</p>
+        <form class="flex">
+          <input type="email" placeholder="您的邮箱" data-i18n-placeholder="footer.email.placeholder"
+            class="px-4 py-2 w-full border-none !rounded-l-button focus:outline-none text-gray-800">
+          <button type="submit"
+            class="bg-primary px-4 py-2 !rounded-r-button hover:bg-purple-800 transition-colors whitespace-nowrap" data-i18n="footer.subscribe">订阅</button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-white/20 mt-12 pt-8 text-center text-white/60">
+      <p data-i18n="footer.copyright">&copy; 2025 OmniPOSTech. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
