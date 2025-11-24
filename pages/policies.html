@@ -16,39 +16,8 @@
   <style>.gradient-bg{background:linear-gradient(135deg,#6b21a8 0%,#9333ea 100%);}</style>
 </head>
 <body class="min-h-screen">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 bg-[#6b21a8] shadow-md z-50">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="../index.html" class="flex items-center space-x-2">
-        <img src="../img/logos/png/logo_no_bg2.png" alt="OmniPOSTech Logo" class="h-16 object-contain">
-        <span class="text-white font-semibold text-xl" data-i18n="footer.brand">OmniPOSTech</span>
-      </a>
-      <nav class="hidden md:flex items-center space-x-8" id="mainNav">
-        <a href="../index.html#carousel" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.scenes">应用场景</a>
-        <a href="../index.html#features" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.features">特点</a>
-        <a href="../index.html#painpoints" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.painpoints">餐厅痛点</a>
-        <a href="../index.html#ourstory" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.story">我们的故事</a>
-        <a href="../index.html#testimonials" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.testimonials">客户评价</a>
-        <a href="../index.html#pricing" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.pricing">价格方案</a>
-        <a href="../index.html#contact" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.contact">联系我们</a>
-        <a href="policies.html" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.policies">政策</a>
-        <button class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" data-i18n="nav.getStarted">立即开始</button>
-        <div class="relative" id="langSelector">
-          <button class="flex items-center space-x-1 text-white hover:text-white/80 font-medium" id="langBtn">
-            <span id="currentLangLabel">中文</span>
-            <i class="ri-arrow-down-s-line"></i>
-          </button>
-          <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 hidden" id="langDropdown">
-            <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="zh">中文 (ZH)</button>
-            <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="en">English (EN)</button>
-          </div>
-        </div>
-      </nav>
-      <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
-        <i class="ri-menu-line text-white ri-lg"></i>
-      </button>
-    </div>
-  </header>
+  <!-- Header Section will be loaded by JS -->
+  <script src="../js/header-loader.js"></script>
 
   <!-- Hero Section -->
   <section class="pt-24 relative overflow-hidden">

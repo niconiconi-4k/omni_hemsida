@@ -17,40 +17,8 @@
 </head>
 
 <body class="min-h-screen">
-    <!-- Header Section -->
-    <header class="fixed top-0 left-0 right-0 bg-[#6b21a8] shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="/" id="homeLogo" class="flex items-center space-x-2">
-                <img src="img/logos/png/logo_no_bg2.png" alt="OmniPOSTech Logo" class="h-16 object-contain">
-                <span class="text-white font-semibold text-xl">OmniPOSTech</span>
-            </a>
-            <nav class="hidden md:flex items-center space-x-8" id="mainNav">
-                <a href="#carousel" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.scenes">应用场景</a>
-                <a href="#features" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.features">特点</a>
-                <a href="#painpoints" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.painpoints">餐厅痛点</a>
-                <a href="#ourstory" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.story">我们的故事</a>
-                <a href="#testimonials" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.testimonials">客户评价</a>
-                <a href="#pricing" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.pricing">价格方案</a>
-                <a href="#contact" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.contact">联系我们</a>
-                <a href="pages/policies.html" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.policies">政策</a>
-                <button
-                    class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" data-i18n="nav.getStarted">立即开始</button>
-                <div class="relative" id="langSelector">
-                    <button class="flex items-center space-x-1 text-white hover:text-white/80 font-medium" id="langBtn">
-                        <span id="currentLangLabel">中文</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 hidden" id="langDropdown">
-                        <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="zh">中文 (ZH)</button>
-                        <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm" data-lang="en">English (EN)</button>
-                    </div>
-                </div>
-            </nav>
-            <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
-                <i class="ri-menu-line text-white ri-lg"></i>
-            </button>
-        </div>
-    </header>
+    <!-- Header Section will be loaded by JS -->
+    <script src="js/header-loader.js"></script>
 
     <!-- Hero Section -->
     <section class="pt-24 relative overflow-hidden">
@@ -250,8 +218,8 @@
         <section class="py-20 bg-white" id="testimonials">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="testimonials.title">客户评价 / 合作店展示</h2>
-                    <p class="text-gray-700 mb-8 text-lg" data-i18n="testimonials.subtitle">真实合作餐厅老板的心声</p>
+                    <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="testimonials_title">客户评价 / 合作店展示</h2>
+                    <p class="text-gray-700 mb-8 text-lg" data-i18n="testimonials_subtitle">真实合作餐厅老板的心声</p>
                 </div>
                 <div class="flex flex-col gap-16 items-center">
                     <!-- Testimonial 1: Left portrait -->
@@ -264,12 +232,12 @@
                         <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#6b21a8] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10" style="transform: translate(-30%, 0);">
                             <img src="img/comments/c1_boss.png" alt="冯老板立绘" class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
                             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-36 text-center">
-                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials.1.boss">冯老板</span>
+                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials_1_boss">冯老板</span>
                             </div>
                         </div>
                         <!-- Dialog box -->
                         <div class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials.1.text">很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。</p>
+                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_1_text">很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。</p>
                         </div>
                     </div>
                     <!-- Testimonial 2: Right portrait -->
@@ -282,12 +250,12 @@
                         <div class="absolute right-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#7e44ad] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10" style="transform: translate(30%, 0);">
                             <img src="img/comments/c2_boss.png" alt="马老板立绘" class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
                             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-36 text-center">
-                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials.2.boss">马老板</span>
+                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials_2_boss">马老板</span>
                             </div>
                         </div>
                         <!-- Dialog box -->
                         <div class="absolute left-0 md:right-48 md:left-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials.2.text">真是太棒的软件了，现在我再也不会在付款收银部分出错了。</p>
+                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_2_text">真是太棒的软件了，现在我再也不会在付款收银部分出错了。</p>
                         </div>
                     </div>
                     <!-- Testimonial 3: Left portrait -->
@@ -300,12 +268,12 @@
                         <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#af7ed6] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10" style="transform: translate(-30%, 0);">
                             <img src="img/comments/c3_boss.png" alt="王老板立绘" class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
                             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-36 text-center">
-                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials.3.boss">王老板</span>
+                                <span class="bg-white bg-opacity-80 px-4 py-1 rounded-full text-primary font-semibold text-base shadow" data-i18n="testimonials_3_boss">王老板</span>
                             </div>
                         </div>
                         <!-- Dialog box -->
                         <div class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials.3.text">很棒的软件，非常容易上手使用。</p>
+                            <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_3_text">很棒的软件，非常容易上手使用。</p>
                         </div>
                     </div>
                 </div>
@@ -315,27 +283,27 @@
             <section class="py-20 bg-white" id="pricing">
                 <div class="container mx-auto px-4">
                     <div class="max-w-3xl mx-auto text-center mb-12">
-                        <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="pricing.title">价格方案</h2>
-                        <p class="text-gray-700 mb-8 text-lg" data-i18n="pricing.subtitle">灵活套餐，满足不同餐厅需求</p>
+                        <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="pricing_title">价格方案</h2>
+                        <p class="text-gray-700 mb-8 text-lg" data-i18n="pricing_subtitle">灵活套餐，满足不同餐厅需求</p>
                     </div>
                     <div class="max-w-2xl mx-auto">
                         <div class="overflow-x-auto">
                             <table class="w-full border-separate border-spacing-y-6">
                                 <tbody>
                                     <tr class="bg-purple-50 rounded-xl shadow">
-                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-primary text-center" data-i18n="pricing.basic.title">基础版</td>
-                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing.basic.desc">小店适用</td>
-                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-700 text-center" data-i18n="pricing.basic.price">敬请期待</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-primary text-center" data-i18n="pricing_basic_title">基础版</td>
+                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing_basic_desc">小店适用</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-700 text-center" data-i18n="pricing_basic_price">敬请期待</td>
                                     </tr>
                                     <tr class="bg-purple-100 rounded-xl shadow">
-                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-purple-700 text-center" data-i18n="pricing.pro.title">进阶版</td>
-                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing.pro.desc">快餐适用</td>
-                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-800 text-center" data-i18n="pricing.pro.price">敬请期待</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-purple-700 text-center" data-i18n="pricing_pro_title">进阶版</td>
+                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing_pro_desc">快餐适用</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-800 text-center" data-i18n="pricing_pro_price">敬请期待</td>
                                     </tr>
                                     <tr class="bg-purple-200 rounded-xl shadow">
-                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-purple-900 text-center" data-i18n="pricing.adv.title">专业版</td>
-                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing.adv.desc">扩展需求</td>
-                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-900 text-center" data-i18n="pricing.adv.price">敬请期待</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-l-xl text-2xl font-bold text-purple-900 text-center" data-i18n="pricing_adv_title">专业版</td>
+                                        <td class="w-1/3 px-6 py-8 text-lg text-gray-700 text-center" data-i18n="pricing_adv_desc">扩展需求</td>
+                                        <td class="w-1/3 px-6 py-8 rounded-r-xl text-xl font-semibold text-purple-900 text-center" data-i18n="pricing_adv_price">敬请期待</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -1,6 +1,10 @@
 {
   "nav.scenes": "Scenes",
   "nav.features": "Features",
+  "nav.painpoints": "Pain Points",
+  "nav.story": "Our Story",
+  "nav.testimonials": "Testimonials",
+  "nav.pricing": "Pricing",
   "nav.contact": "Contact",
   "nav.policies": "Policies",
   "nav.getStarted": "Get Started",
@@ -152,10 +156,6 @@
   "footer.quick.policies": "Policies",
   "footer.quick.painpoints": "Pain Points",
   "footer.quick.story": "Our Story",
-  "footer.quick.testimonials": "Testimonials",
-  "footer.quick.pricing": "Pricing Plans",
-  "footer.contact": "Contact",
-  "footer.news": "Newsletter",
   "footer.news.text": "Subscribe for latest updates and offers",
   "footer.email.placeholder": "Your email",
   "footer.subscribe": "Subscribe",
@@ -183,42 +183,44 @@
   "story.subtitle": "A true journey of Chinese entrepreneurs",
   "story.full": "We are a Chinese startup team striving in Sweden. It all began with a few friends, most of us working in restaurants or having family in the business. Every gathering, restaurant owners would complain: systems are too complex, new staff can't learn, English interfaces are hard to navigate, mistakes happen, customers get frustrated. Small restaurants have limited budgets, existing systems are expensive, and Swedish payment processes are confusing. We realized these pain points were actually opportunities. So we decided to build a digital system truly suited for Chinese restaurants. In the winter wind, we braved the snow to fix printers, tuned systems by the kitchen, and worked side by side with owners and staff to polish every detail. We build systems with heart, truly usable for our own community, so every restaurant can operate with peace of mind. OmniPOSTech is not just technology, but emotion and companionship. We hope to grow together with every restaurant owner, bringing warmth and trust into the digital age.",
   "story.summary": "This is not just technology, but emotion and companionship. OmniPOSTech grows together with you.",
-  "testimonials": {
-    "title": "Testimonials / Partner Restaurants",
-    "subtitle": "Real voices from our partner restaurant owners",
-    "1": {
-      "text": "Great software! I used to be totally confused every month when doing accounts and taxes, always working late into the night. Now with Omni, it's so much easier and I don't mess things up anymore.",
-      "boss": "Boss Feng",
-      "restaurant": ""
-    },
-    "2": {
-      "text": "This is truly amazing software. I never make mistakes at the payment and cashier part anymore.",
-      "boss": "Boss Ma",
-      "restaurant": ""
-    },
-    "3": {
-      "text": "Wonderful software, very easy to use and get started.",
-      "boss": "Boss Wang",
-      "restaurant": ""
-    }
-  },
-  "pricing": {
-    "title": "Pricing Plans",
-    "subtitle": "Flexible packages for every restaurant need",
-    "basic": {
-      "title": "Basic",
-      "desc": "For small restaurants",
-      "price": "Coming soon"
-    },
-    "pro": {
-      "title": "Pro",
-      "desc": "For fast food",
-      "price": "Coming soon"
-    },
-    "adv": {
-      "title": "Advanced",
-      "desc": "For extended needs",
-      "price": "Coming soon"
-    }
-  }
+  "testimonials_title": "Testimonials / Partner Restaurants",
+  "testimonials_subtitle": "Real voices from our partner restaurant owners",
+  "testimonials_1_text": "Great software! I used to be totally confused every month when doing accounts and taxes, always working late into the night. Now with Omni, it's so much easier and I don't mess things up anymore.",
+  "testimonials_1_boss": "Boss Feng",
+  "testimonials_1_restaurant": "",
+  "testimonials_2_text": "This is truly amazing software. I never make mistakes at the payment and cashier part anymore.",
+  "testimonials_2_boss": "Boss Ma",
+  "testimonials_2_restaurant": "",
+  "testimonials_3_text": "Wonderful software, very easy to use and get started.",
+  "testimonials_3_boss": "Boss Wang",
+  "testimonials_3_restaurant": "",
+  "pricing_title": "Pricing Plans",
+  "pricing_subtitle": "Flexible packages for every restaurant need",
+  "pricing_basic_title": "Basic",
+  "pricing_basic_desc": "For small restaurants",
+  "pricing_basic_price": "Coming soon",
+  "pricing_pro_title": "Pro",
+  "pricing_pro_desc": "For fast food",
+  "pricing_pro_price": "Coming soon",
+  "pricing_adv_title": "Advanced",
+  "pricing_adv_desc": "For extended needs",
+  "pricing_adv_price": "Coming soon",
+  "comments.bg.alt1": "Customer testimonial background",
+  "comments.bg.alt2": "Customer testimonial background",
+  "comments.bg.alt3": "Customer testimonial background",
+  "comments.boss.alt1": "Boss Feng portrait",
+  "comments.boss.alt2": "Boss Ma portrait",
+  "comments.boss.alt3": "Boss Wang portrait",
+  "pricing.table.basic": "Basic",
+  "pricing.table.pro": "Pro",
+  "pricing.table.adv": "Advanced",
+  "contact.form.name": "Name",
+  "contact.form.email": "Email",
+  "contact.form.phone": "Phone",
+  "contact.form.message": "Message",
+  "contact.form.send": "Send",
+  "footer.social.facebook": "Facebook (Coming Soon)",
+  "footer.social.twitter": "Twitter (Coming Soon)",
+  "footer.social.instagram": "Instagram (Coming Soon)",
+  "footer.social.linkedin": "LinkedIn (Coming Soon)"
 }

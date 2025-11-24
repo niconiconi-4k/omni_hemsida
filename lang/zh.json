@@ -187,42 +187,44 @@
   "story.subtitle": "一段属于华人创业者的真实经历",
   "story.full": "我们是一支在瑞典打拼的华人创业团队。最初，我们只是几个朋友，大家都在餐厅工作或有亲戚在餐饮业。每次聚会，餐厅老板总会抱怨：系统太复杂，新员工学不会，英文界面找半天，点错单，顾客不满。小店预算有限，现有系统门槛太高，瑞典支付流程又复杂，大家都很头疼。我们意识到，这些痛点其实是机会。于是，我们决定自己动手做一套真正适合华人餐厅的数字化系统。冬天的风里，我们顶着雪跑去修打印机，厨房旁边调系统，和老板、员工一起反复打磨每一个细节。我们用心做给“自己人”真正用得顺的系统，让每一家餐厅都能安心经营。OmniPOSTech，不仅是技术，更是情感和陪伴。我们希望和每一位餐厅老板一起成长，把温度和信任带进数字化时代。",
   "story.summary": "这不仅是技术，更是情感和陪伴。OmniPOSTech，和你一起成长。",
-  "testimonials": {
-    "title": "客户评价 / 合作店展示",
-    "subtitle": "真实合作餐厅老板的心声",
-    "1": {
-      "text": "很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。",
-      "boss": "冯老板",
-      "restaurant": ""
-    },
-    "2": {
-      "text": "真是太棒的软件了，现在我再也不会在付款收银部分出错了。",
-      "boss": "马老板",
-      "restaurant": ""
-    },
-    "3": {
-      "text": "很棒的软件，非常容易上手使用。",
-      "boss": "王老板",
-      "restaurant": ""
-    }
-  },
-  "pricing": {
-    "title": "价格方案",
-    "subtitle": "灵活套餐，满足不同餐厅需求",
-    "basic": {
-      "title": "基础版",
-      "desc": "小店适用",
-      "price": "敬请期待"
-    },
-    "pro": {
-      "title": "进阶版",
-      "desc": "快餐适用",
-      "price": "敬请期待"
-    },
-    "adv": {
-      "title": "专业版",
-      "desc": "扩展需求",
-      "price": "敬请期待"
-    }
-  }
+  "testimonials_title": "客户评价 / 合作店展示",
+  "testimonials_subtitle": "真实合作餐厅老板的心声",
+  "testimonials_1_text": "很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。",
+  "testimonials_1_boss": "冯老板",
+  "testimonials_1_restaurant": "",
+  "testimonials_2_text": "真是太棒的软件了，现在我再也不会在付款收银部分出错了。",
+  "testimonials_2_boss": "马老板",
+  "testimonials_2_restaurant": "",
+  "testimonials_3_text": "很棒的软件，非常容易上手使用。",
+  "testimonials_3_boss": "王老板",
+  "testimonials_3_restaurant": "",
+  "pricing_title": "价格方案",
+  "pricing_subtitle": "灵活套餐，满足不同餐厅需求",
+  "pricing_basic_title": "基础版",
+  "pricing_basic_desc": "小店适用",
+  "pricing_basic_price": "敬请期待",
+  "pricing_pro_title": "进阶版",
+  "pricing_pro_desc": "快餐适用",
+  "pricing_pro_price": "敬请期待",
+  "pricing_adv_title": "专业版",
+  "pricing_adv_desc": "扩展需求",
+  "pricing_adv_price": "敬请期待",
+  "comments.bg.alt1": "Customer testimonial background",
+  "comments.bg.alt2": "Customer testimonial background",
+  "comments.bg.alt3": "Customer testimonial background",
+  "comments.boss.alt1": "Boss Feng portrait",
+  "comments.boss.alt2": "Boss Ma portrait",
+  "comments.boss.alt3": "Boss Wang portrait",
+  "pricing.table.basic": "Basic",
+  "pricing.table.pro": "Pro",
+  "pricing.table.adv": "Advanced",
+  "contact.form.name": "Name",
+  "contact.form.email": "Email",
+  "contact.form.phone": "Phone",
+  "contact.form.message": "Message",
+  "contact.form.send": "Send",
+  "footer.social.facebook": "Facebook (Coming Soon)",
+  "footer.social.twitter": "Twitter (Coming Soon)",
+  "footer.social.instagram": "Instagram (Coming Soon)",
+  "footer.social.linkedin": "LinkedIn (Coming Soon)"
 }
