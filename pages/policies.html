@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title data-i18n="policies.title">政策信息 | OmniPOSTech</title>
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script>tailwind.config={theme:{extend:{colors:{primary:'#6b21a8',secondary:'#f3f4f6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}};</script>
+  <script>tailwind.config = { theme: { extend: { colors: { primary: '#6b21a8', secondary: '#f3f4f6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } };</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -13,8 +14,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
   <link rel="icon" type="image/png" href="../img/logos/Favicons/browser.png">
   <link rel="stylesheet" href="../css/style.css">
-  <style>.gradient-bg{background:linear-gradient(135deg,#6b21a8 0%,#9333ea 100%);}</style>
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #6b21a8 0%, #9333ea 100%);
+    }
+  </style>
 </head>
+
 <body class="min-h-screen">
   <!-- Static Header -->
   <header class="fixed top-0 left-0 right-0 bg-[#6b21a8] shadow-md z-50">
@@ -24,14 +30,23 @@
         <span class="text-white font-semibold text-xl" data-i18n="footer.brand">OmniPOSTech</span>
       </a>
       <nav class="hidden md:flex items-center space-x-8" id="mainNav">
-        <a href="../#carousel" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.scenes">Scenes</a>
-        <a href="../#features" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.features">Features</a>
-        <a href="../#painpoints" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.painpoints">Pain Points</a>
-        <a href="../#ourstory" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.story">Our Story</a>
-        <a href="../#testimonials" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.testimonials">Testimonials</a>
-        <a href="../#pricing" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.pricing">Pricing</a>
-        <a href="../#contact" class="text-white hover:text-white/80 font-medium transition-colors" data-i18n="nav.contact">Contact</a>
-        <button class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" data-i18n="nav.getStarted">Get Started</button>
+        <a href="../#carousel" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.scenes">Scenes</a>
+        <a href="../#features" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.features">Features</a>
+        <a href="../#painpoints" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.painpoints">Pain Points</a>
+        <a href="../#ourstory" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.story">Our Story</a>
+        <a href="../#testimonials" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.testimonials">Testimonials</a>
+        <a href="../#pricing" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.pricing">Pricing</a>
+        <a href="../#contact" class="text-white hover:text-white/80 font-medium transition-colors"
+          data-i18n="nav.contact">Contact</a>
+        <button
+          class="bg-white text-primary px-5 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+          data-i18n="nav.getStarted">Get Started</button>
         <div class="relative" id="langSelector">
           <button class="flex items-center space-x-1 text-white hover:text-white/80 font-medium" id="langBtn">
             <span id="currentLangLabel">English</span>
@@ -62,10 +77,15 @@
         <div class="max-w-3xl text-white opacity-0 translate-y-8 animate-fade-in-up">
           <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="policies.title">政策信息</h1>
           <p class="text-xl mb-2" data-i18n="privacy.effectiveDate">生效日期：填写发布日期</p>
-          <p class="text-xl mb-8 opacity-0 animate-fade-in-delay" data-i18n="privacy.intro">OmniPOSTech AB（“我们”）运营网站 omnipostech.se，提供在线点餐与支付服务。本隐私政策说明我们依据 GDPR 如何收集、使用、保存与保护您的个人数据。</p>
+          <p class="text-xl mb-8 opacity-0 animate-fade-in-delay" data-i18n="privacy.intro">OmniPOSTech AB（“我们”）运营网站
+            omnipostech.se，提供在线点餐与支付服务。本隐私政策说明我们依据 GDPR 如何收集、使用、保存与保护您的个人数据。</p>
           <div class="flex flex-wrap gap-4 opacity-0 animate-fade-in-delay-2">
-            <a href="#policies-content" class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap" data-i18n="policies.readStart">开始阅读</a>
-            <a href="coming-soon.html" class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-all duration-300 transform hover:scale-105 whitespace-nowrap" data-i18n="policies.moreFeatures">更多功能</a>
+            <a href="#policies-content"
+              class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap"
+              data-i18n="policies.readStart">开始阅读</a>
+            <a href="coming-soon.html"
+              class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
+              data-i18n="policies.moreFeatures">更多功能</a>
           </div>
         </div>
       </div>
@@ -136,7 +156,8 @@
       </ul>
       <h3 class="text-lg font-semibold text-gray-700" data-i18n="cookie.manage.title">Cookie 管理</h3>
       <p class="text-gray-600" data-i18n="cookie.manage.text1">首次访问时我们会征求您对非必要 Cookie 的同意。</p>
-      <p class="text-gray-600" data-i18n="cookie.manage.text2">您可以在浏览器设置中管理或删除 Cookie；建议使用合规 Cookie 授权工具（如 CookieBot）。</p>
+      <p class="text-gray-600" data-i18n="cookie.manage.text2">您可以在浏览器设置中管理或删除 Cookie；建议使用合规 Cookie 授权工具（如 CookieBot）。
+      </p>
     </section>
 
     <!-- Terms of Service -->
@@ -181,7 +202,8 @@
         <li data-i18n="cancelRefund.refunds.item.time">退款可能在 3–7 个工作日内到账，取决于您的银行。</li>
       </ul>
       <h3 class="text-lg font-semibold text-gray-700" data-i18n="cancelRefund.contact.title">退款联系渠道</h3>
-      <p class="text-gray-600" data-i18n="cancelRefund.contact.email">邮箱：info@omnipostech.se / support@omnipostech.se</p>
+      <p class="text-gray-600" data-i18n="cancelRefund.contact.email">邮箱：info@omnipostech.se / support@omnipostech.se
+      </p>
       <p class="text-gray-600" data-i18n="cancelRefund.contact.phone">电话：+46000000000</p>
       <p class="text-gray-600" data-i18n="cancelRefund.contact.hours">工作时间：周一–周五 10:00–18:00</p>
     </section>
@@ -196,19 +218,28 @@
           <span class="font-semibold text-xl ml-2" data-i18n="footer.brand">OmniPOSTech</span>
         </div>
         <p class="mb-6" data-i18n="footer.slogan">为中餐及亚洲餐厅提供一体化 POS 解决方案</p>
-        <a href="../index.html" class="text-white/80 hover:text-white underline underline-offset-4" data-i18n="footer.backHome">返回首页</a>
+        <a href="../index.html" class="text-white/80 hover:text-white underline underline-offset-4"
+          data-i18n="footer.backHome">返回首页</a>
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-4" data-i18n="footer.quick">快速链接</h3>
         <ul class="space-y-2">
-          <li><a href="../#carousel" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.scenes">应用场景</a></li>
-          <li><a href="../#features" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.features">特点</a></li>
-          <li><a href="../#painpoints" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.painpoints">餐厅痛点</a></li>
-          <li><a href="../#ourstory" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.story">我们的故事</a></li>
-          <li><a href="../#testimonials" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.testimonials">客户评价</a></li>
-          <li><a href="../#pricing" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.pricing">价格方案</a></li>
-          <li><a href="../#contact" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.contact">联系我们</a></li>
-          <li><a href="../#policies" class="text-white/80 hover:text-white transition-colors" data-i18n="footer.quick.policies">政策</a></li>
+          <li><a href="../#carousel" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.scenes">应用场景</a></li>
+          <li><a href="../#features" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.features">特点</a></li>
+          <li><a href="../#painpoints" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.painpoints">餐厅痛点</a></li>
+          <li><a href="../#ourstory" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.story">我们的故事</a></li>
+          <li><a href="../#testimonials" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.testimonials">客户评价</a></li>
+          <li><a href="../#pricing" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.pricing">价格方案</a></li>
+          <li><a href="../#contact" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.contact">联系我们</a></li>
+          <li><a href="../#policies" class="text-white/80 hover:text-white transition-colors"
+              data-i18n="footer.quick.policies">政策</a></li>
         </ul>
       </div>
       <div>
@@ -237,12 +268,14 @@
       <div>
         <h3 class="text-lg font-semibold mb-4" data-i18n="footer.news">新闻订阅</h3>
         <p class="text-white/80 mb-4" data-i18n="footer.news.text">订阅我们的新闻，获取最新更新和优惠</p>
-        <form class="flex">
-          <input type="email" placeholder="您的邮箱" data-i18n-placeholder="footer.email.placeholder"
+        <form class="flex" id="subscribe">
+          <input type="email" name="email" placeholder="您的邮箱" data-i18n-placeholder="footer.email.placeholder"
             class="px-4 py-2 w-full border-none !rounded-l-button focus:outline-none text-gray-800">
-          <button type="submit"
-            class="bg-primary px-4 py-2 !rounded-r-button hover:bg-purple-800 transition-colors whitespace-nowrap" data-i18n="footer.subscribe">订阅</button>
+          <button type="submit" id="submitBtn"
+            class="bg-primary px-4 py-2 !rounded-r-button hover:bg-purple-800 transition-colors whitespace-nowrap"
+            data-i18n="footer.subscribe">订阅</button>
         </form>
+        <script src="../js/subscribe.js"></script>
       </div>
     </div>
     <div class="border-t border-white/20 mt-12 pt-8 text-center text-white/60">
@@ -287,4 +320,5 @@
   </script>
   <script src="../js/i18n.js"></script>
 </body>
+
 </html>
