@@ -194,7 +194,7 @@
       "story.summary": "这不仅是技术，更是情感和陪伴。OmniPOSTech，和你一起成长。",
       "testimonials_title": "客户评价 / 合作店展示",
       "testimonials_subtitle": "真实合作餐厅老板的心声",
-      "testimonials_1_text": "很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。",
+      "testimonials_1_text": "很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄错东西。",
       "testimonials_1_boss": "冯老板",
       "testimonials_1_restaurant": "",
       "testimonials_2_text": "真是太棒的软件了，现在我再也不会在付款收银部分出错了。",

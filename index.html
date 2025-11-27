@@ -98,23 +98,22 @@
     <section class="py-20 bg-white scroll-mt-12" id="carousel">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4" data-i18n="scenes.title">应用场景</h2>
+                <h2 class="text-3xl font-bold mb-4 text-primary" data-i18n="scenes.title">应用场景</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="scenes.subtitle">真实餐厅使用场景展示</p>
             </div>
-            <div class="carousel-container rounded-lg shadow-lg overflow-hidden">
+            <div class="carousel-container relative rounded-lg shadow-lg overflow-hidden">
                 <div class="carousel-inner" id="carouselInner">
                     <div class="carousel-slide"><img src="img/scene/img1.jpg" alt="餐厅场景1"></div>
                     <div class="carousel-slide"><img src="img/scene/img2.png" alt="餐厅场景2"></div>
                     <div class="carousel-slide"><img src="img/scene/img3.jpg" alt="餐厅场景3"></div>
                 </div>
-            </div>
-            <div class="flex justify-center mt-6 space-x-4">
+                <!-- Arrows overlayed on image sides -->
                 <button id="prevBtn"
-                    class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors">
+                    class="absolute top-1/2 left-2 -translate-y-1/2 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors shadow-lg z-10">
                     <i class="ri-arrow-left-s-line ri-lg"></i>
                 </button>
                 <button id="nextBtn"
-                    class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors">
+                    class="absolute top-1/2 right-2 -translate-y-1/2 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-purple-800 transition-colors shadow-lg z-10">
                     <i class="ri-arrow-right-s-line ri-lg"></i>
                 </button>
             </div>
@@ -177,70 +176,63 @@
         </div>
     </section>
     <!-- Features Section -->
-    <section class="py-20 bg-gray-50 scroll-mt-12" id="features">
+    <section class="py-20 bg-white scroll-mt-12" id="features">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4" data-i18n="features.sectionTitle">🌟 为什么选择 OmniPOSTech？</h2>
+                <h2 class="text-4xl font-extrabold mb-4 text-primary drop-shadow-lg" data-i18n="features.sectionTitle">🌟 为什么选择 OmniPOSTech？</h2>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto" data-i18n="features.sectionDesc">专为中餐及亚洲餐厅打造的数字化解决方案</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Large Feature 1 -->
-                <div
-                    class="md:col-span-2 bg-gradient-to-br from-purple-700 to-purple-900 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="feature.easy.title">简单上手，轻松培训</h3>
-                    <p class="text-white/90" data-i18n="feature.easy.text">界面清晰、流程直观，员工经过短时间培训即可熟练使用。</p>
+            <div class="flex flex-col lg:flex-row lg:space-x-8 gap-8">
+                <!-- Left Column: Feature Cards -->
+                <div class="flex-1 flex flex-col gap-8">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 rounded-2xl shadow-2xl border border-purple-700 flex flex-row items-center gap-6 hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl"><i class="ri-flashlight-line"></i></div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="feature.easy.title">简单上手，轻松培训</h3>
+                            <p class="text-white/80" data-i18n="feature.easy.text">界面清晰、流程直观，员工经过短时间培训即可熟练使用。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-700 to-purple-800 text-white p-8 rounded-2xl shadow-2xl border border-purple-700 flex flex-row items-center gap-6 hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl"><i class="ri-translate-2"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2" data-i18n="feature.cn.title">中文支持贯穿前台与后厨</h3>
+                            <p class="text-white/80" data-i18n="feature.cn.text">不只是收银界面支持中文，厨房单据、菜名、备注也可以中文显示。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-600 to-purple-700 text-white p-8 rounded-2xl shadow-2xl border border-purple-700 flex flex-row items-center gap-6 hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl"><i class="ri-shopping-bag-3-line"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2" data-i18n="feature.bundle.title">一价全包：POS + 在线点餐 + 二维码点餐</h3>
+                            <p class="text-white/80" data-i18n="feature.bundle.text">三大核心功能，不拆开卖，不收插件费。透明价格，减少餐厅数字化成本。</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Medium Feature -->
-                <div
-                    class="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-bold mb-3" data-i18n="feature.cn.title">中文支持贯穿前台与后厨</h3>
-                    <p class="text-white/90" data-i18n="feature.cn.text">不只是收银界面支持中文，厨房单据、菜名、备注也可以中文显示。</p>
-                </div>
-                <!-- Medium Feature -->
-                <div
-                    class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-bold mb-3" data-i18n="feature.bundle.title">一价全包：POS + 在线点餐 + 二维码点餐</h3>
-                    <p class="text-white/90" data-i18n="feature.bundle.text">三大核心功能，不拆开卖，不收插件费。透明价格，减少餐厅数字化成本。</p>
-                </div>
-                <!-- Large Feature 2 -->
-                <div class="md:col-span-2 bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800" data-i18n="feature.dinein.title">堂食数字化方案已成熟</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
-                                <i class="ri-check-line ri-lg"></i>
-                            </div>
-                            <span class="text-gray-700" data-i18n="feature.list.pos">收银台 POS</span>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
-                                <i class="ri-check-line ri-lg"></i>
-                            </div>
-                            <span class="text-gray-700" data-i18n="feature.list.qr">店内扫码点餐</span>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
-                                <i class="ri-check-line ri-lg"></i>
-                            </div>
-                            <span class="text-gray-700" data-i18n="feature.list.menu">在线菜单浏览</span>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="w-6 h-6 flex-shrink-0 flex items-center justify-center text-primary mr-2">
-                                <i class="ri-check-line ri-lg"></i>
-                            </div>
-                            <span class="text-gray-700" data-i18n="feature.list.kitchen">中餐、亚洲餐厅后厨流程深度适配</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Medium Feature -->
-                <div
-                    class="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-xl font-bold mb-3" data-i18n="feature.future.title">未来将接入欧洲常用外卖和点餐平台</h3>
-                    <p class="text-white/90" data-i18n="feature.future.text">让线上订单自动同步 POS，减少人工操作。</p>
-                </div>
-                <!-- Medium Feature -->
-                <div class="md:col-span-2 bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800" data-i18n="feature.team.title">年轻创新团队，持续快速更新</h3>
-                    <p class="text-gray-700" data-i18n="feature.team.text">不墨守成规，不走旧路，我们的目标是让"开餐厅"这件事更轻松。</p>
+                <!-- Right Column: Large Cards -->
+                <div class="flex-1 flex flex-col gap-8">
+                    <div class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-2xl border border-purple-200 flex flex-col items-start hover:scale-105 transition-all duration-300">
+                        <div class="mb-4 text-5xl text-primary"><i class="ri-restaurant-2-line"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800" data-i18n="feature.dinein.title">堂食数字化方案已成熟</h3>
+                        <ul class="space-y-3 mt-2 w-full max-w-md">
+                            <li class="flex items-center gap-2"><i class="ri-check-line text-primary text-xl"></i><span class="text-gray-700" data-i18n="feature.list.pos">收银台 POS</span></li>
+                            <li class="flex items-center gap-2"><i class="ri-check-line text-primary text-xl"></i><span class="text-gray-700" data-i18n="feature.list.qr">店内扫码点餐</span></li>
+                            <li class="flex items-center gap-2"><i class="ri-check-line text-primary text-xl"></i><span class="text-gray-700" data-i18n="feature.list.menu">在线菜单浏览</span></li>
+                            <li class="flex items-center gap-2"><i class="ri-check-line text-primary text-xl"></i><span class="text-gray-700" data-i18n="feature.list.kitchen">中餐、亚洲餐厅后厨流程深度适配</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-8 rounded-2xl shadow-2xl border border-purple-700 flex flex-row items-center gap-6 hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl"><i class="ri-global-line"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2" data-i18n="feature.future.title">未来将接入欧洲常用外卖和点餐平台</h3>
+                            <p class="text-white/80" data-i18n="feature.future.text">让线上订单自动同步 POS，减少人工操作。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-90 p-8 rounded-2xl shadow-2xl border border-purple-200 flex flex-row items-center gap-6 hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl text-primary"><i class="ri-team-line"></i></div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800" data-i18n="feature.team.title">年轻创新团队，持续快速更新</h3>
+                            <p class="text-gray-700" data-i18n="feature.team.text">不墨守成规，不走旧路，我们的目标是让"开餐厅"这件事更轻松。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -265,21 +257,21 @@
         </div>
     </section>
     <!-- Testimonials / Partner Restaurants Section -->
-    <section class="py-20 bg-white scroll-mt-12" id="testimonials">
+    <section class="py-20 bg-gradient-to-br from-purple-50 via-white to-purple-100 scroll-mt-12" id="testimonials">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="testimonials_title">客户评价 / 合作店展示</h2>
-                <p class="text-gray-700 mb-8 text-lg" data-i18n="testimonials_subtitle">真实合作餐厅老板的心声</p>
+                <h2 class="text-4xl font-extrabold mb-6 text-primary drop-shadow-lg" data-i18n="testimonials_title">客户评价 / 合作店展示</h2>
+                <p class="text-lg text-gray-700 mb-8" data-i18n="testimonials_subtitle">真实合作餐厅老板的心声</p>
             </div>
             <div class="flex flex-col gap-16 items-center">
                 <!-- Testimonial 1: Left portrait -->
-                <div class="relative w-[70vw] max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
-                    <!-- Background image placeholder -->
-                    <div class="absolute inset-0 rounded-2xl shadow-lg">
-                        <img src="img/comments/c1.jpg" alt="客户评价背景" class="w-full h-full object-cover rounded-2xl" />
+                <div class="relative w-full max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
+                    <!-- Background image -->
+                    <div class="absolute inset-0 rounded-3xl shadow-2xl overflow-hidden">
+                        <img src="img/comments/c1.jpg" alt="客户评价背景" class="testimonial-bg w-full h-full object-cover rounded-3xl scale-[1.15] opacity-100" />
                     </div>
                     <!-- Boss portrait left -->
-                    <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#6b21a8] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10"
+                    <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#6b21a8] bg-opacity-90 rounded-2xl border-4 border-white shadow-2xl flex items-center justify-center z-10"
                         style="transform: translate(-30%, 0);">
                         <img src="img/comments/c1_boss.png" alt="冯老板立绘"
                             class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
@@ -291,19 +283,26 @@
                     </div>
                     <!-- Dialog box -->
                     <div
-                        class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                        <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_1_text">
-                            很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄做东西。</p>
+                        class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-2xl p-8 pt-8 flex flex-col z-20 border border-primary">
+                        <div class="absolute top-0 left-0 pt-2 px-8 flex" style="z-index:2;">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl"></i>
+                        </div>
+                        <p class="text-lg text-gray-800 leading-relaxed mt-2 text-left" data-i18n="testimonials_1_text">
+                            很好的软件，以前每个月算帐报税的时候我都一头雾水，每次都忙到半夜，现在用了Omni，轻松多了，也不会弄错东西。</p>
                     </div>
                 </div>
                 <!-- Testimonial 2: Right portrait -->
-                <div class="relative w-[70vw] max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
-                    <!-- Background image placeholder -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-2xl shadow-lg">
-                        <img src="img/comments/c2.jpg" alt="客户评价背景" class="w-full h-full object-cover rounded-2xl" />
+                <div class="relative w-full max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
+                    <!-- Background image -->
+                    <div class="absolute inset-0 rounded-3xl shadow-2xl overflow-hidden">
+                        <img src="img/comments/c2.jpg" alt="客户评价背景" class="testimonial-bg w-full h-full object-cover rounded-3xl scale-[1.15] opacity-100" />
                     </div>
                     <!-- Boss portrait right -->
-                    <div class="absolute right-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#7e44ad] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10"
+                    <div class="absolute right-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#7e44ad] bg-opacity-90 rounded-2xl border-4 border-white shadow-2xl flex items-center justify-center z-10"
                         style="transform: translate(30%, 0);">
                         <img src="img/comments/c2_boss.png" alt="马老板立绘"
                             class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
@@ -315,19 +314,26 @@
                     </div>
                     <!-- Dialog box -->
                     <div
-                        class="absolute left-0 md:right-48 md:left-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                        <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_2_text">
+                        class="absolute left-0 md:right-48 md:left-auto bottom-8 w-[60%] bg-white bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-2xl p-8 pt-8 flex flex-col z-20 border border-primary">
+                        <div class="absolute top-0 right-0 pt-2 pr-8 flex" style="z-index:2;">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl"></i>
+                        </div>
+                        <p class="text-lg text-gray-800 leading-relaxed mt-2 text-right" data-i18n="testimonials_2_text">
                             真是太棒的软件了，现在我再也不会在付款收银部分出错了。</p>
                     </div>
                 </div>
                 <!-- Testimonial 3: Left portrait -->
-                <div class="relative w-[70vw] max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
-                    <!-- Background image placeholder -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-200 to-blue-400 rounded-2xl shadow-lg">
-                        <img src="img/comments/c3.jpg" alt="客户评价背景" class="w-full h-full object-cover rounded-2xl" />
+                <div class="relative w-full max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center">
+                    <!-- Background image -->
+                    <div class="absolute inset-0 rounded-3xl shadow-2xl overflow-hidden">
+                        <img src="img/comments/c3.jpg" alt="客户评价背景" class="testimonial-bg w-full h-full object-cover rounded-3xl scale-[1.15] opacity-100" />
                     </div>
                     <!-- Boss portrait left -->
-                    <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#af7ed6] rounded-xl border-4 border-white shadow-lg flex items-center justify-center z-10"
+                    <div class="absolute left-0 bottom-0 w-44 h-80 md:w-56 md:h-[350px] bg-[#af7ed6] bg-opacity-90 rounded-2xl border-4 border-white shadow-2xl flex items-center justify-center z-10"
                         style="transform: translate(-30%, 0);">
                         <img src="img/comments/c3_boss.png" alt="王老板立绘"
                             class="absolute left-0 bottom-0 w-full h-auto object-bottom object-contain" />
@@ -339,8 +345,15 @@
                     </div>
                     <!-- Dialog box -->
                     <div
-                        class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-90 rounded-xl shadow-xl p-8 flex flex-col z-20 border border-primary">
-                        <p class="text-lg text-gray-800 leading-relaxed" data-i18n="testimonials_3_text">很棒的软件，非常容易上手使用。
+                        class="absolute right-0 md:left-48 md:right-auto bottom-8 w-[60%] bg-white bg-opacity-80 backdrop-blur-lg rounded-2xl shadow-2xl p-8 pt-8 flex flex-col z-20 border border-primary">
+                        <div class="absolute top-0 left-0 pt-2 px-8 flex" style="z-index:2;">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl"></i>
+                        </div>
+                        <p class="text-lg text-gray-800 leading-relaxed mt-2 text-left" data-i18n="testimonials_3_text">很棒的软件，非常容易上手使用。
                         </p>
                     </div>
                 </div>
@@ -393,7 +406,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-2xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-4" data-i18n="contact.title">联系我们</h2>
+                    <h2 class="text-3xl font-bold mb-4 text-primary" data-i18n="contact.title">联系我们</h2>
                     <p class="text-gray-600" data-i18n="contact.subtitle">有任何问题？欢迎随时与我们联系</p>
                 </div>
                 <form class="space-y-6" id="contactForm">
@@ -429,7 +442,7 @@
     <section class="py-20 bg-gray-50 scroll-mt-12" id="policies">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6" data-i18n="policies.title">政策信息</h2>
+                <h2 class="text-3xl font-bold mb-6 text-primary" data-i18n="policies.title">政策信息</h2>
                 <p class="text-gray-600 mb-8" data-i18n="policies.teaser">查看我们的退货、退款、取消、法律与促销相关详细政策说明。</p>
                 <a href="pages/policies.html"
                     class="inline-block bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-purple-800 transition-colors"
@@ -517,7 +530,7 @@
                 <h3 class="text-lg font-semibold mb-4" data-i18n="footer.news">新闻订阅</h3>
                 <p class="text-white/80 mb-4" data-i18n="footer.news.text">订阅我们的新闻，获取最新更新和优惠</p>
                 <form class="flex" id="subscribe">
-                    <input type="email" name="email" placeholder="您的邮箱" data-i18n-placeholder="footer.email.placeholder"
+                    <input type="email" name="email" placeholder="您的邮箱" data-i18n-placeholder="footer.email.placeholder" required
                         class="px-4 py-2 w-full border-none !rounded-l-button focus:outline-none text-gray-800">
                     <button type="submit" id="submitBtn"
                         class="bg-primary px-4 py-2 !rounded-r-button hover:bg-purple-800 transition-colors whitespace-nowrap"
@@ -609,6 +622,32 @@
         });
     </script>
     <script src="js/i18n.js"></script>
+
+    <script>
+        // Testimonial background pan effect
+        function randomPan(el) {
+            let x = 0, y = 0;
+            let targetX = 0, targetY = 0;
+            function setRandomTarget() {
+                targetX = Math.random() * 20 - 10; // -10% to +10%
+                targetY = Math.random() * 20 - 10;
+            }
+            setRandomTarget();
+            setInterval(setRandomTarget, 7000); // slower change interval
+            function animate() {
+                x += (targetX - x) * 0.002; // slower and softer movement
+                y += (targetY - y) * 0.002;
+                el.style.transform = `scale(1.15) translate(${x}%, ${y}%)`;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.testimonial-bg').forEach(bg => {
+                randomPan(bg);
+            });
+        });
+    </script>
 </body>
 
 </html>
