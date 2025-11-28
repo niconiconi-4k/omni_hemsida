@@ -20,6 +20,7 @@
       "scenes.title": "应用场景",
       "scenes.subtitle": "真实餐厅使用场景展示",
       "features.sectionTitle": "🌟 为什么选择 OmniPOSTech？",
+      "features.sectionDesc": "OmniPOSTech 致力于让餐厅数字化更简单、更高效，专为中餐及亚洲餐厅流程深度适配。",
       "feature.easy.title": "简单上手，轻松培训",
       "feature.easy.text": "界面清晰、流程直观，员工经过短时间培训即可熟练使用。",
       "feature.cn.title": "中文支持贯穿前台与后厨",
@@ -231,7 +232,11 @@
       "footer.social.facebook": "Facebook (Coming Soon)",
       "footer.social.twitter": "Twitter (Coming Soon)",
       "footer.social.instagram": "Instagram (Coming Soon)",
-      "footer.social.linkedin": "LinkedIn (Coming Soon)"
+      "footer.social.linkedin": "LinkedIn (Coming Soon)",
+      "error404.title": "页面未找到",
+      "error404.text": "您访问的页面不存在或已被移动。请检查链接或返回首页。",
+      "error404.backHome": "返回首页",
+      "error404.contactSupport": "联系支持"
     },
     en: {
       "nav.scenes": "Scenes",
@@ -252,6 +257,7 @@
       "scenes.title": "Use Cases",
       "scenes.subtitle": "Real restaurant scenario showcase",
       "features.sectionTitle": "🌟 Why Choose OmniPOSTech?",
+      "features.sectionDesc": "OmniPOSTech is dedicated to making restaurant digitalization easier and more efficient, deeply tailored for Chinese and Asian restaurant workflows.",
       "feature.easy.title": "Easy Onboarding, Fast Training",
       "feature.easy.text": "Clear interface and intuitive flow. Staff become proficient after short training.",
       "feature.cn.title": "Chinese Support Across Front & Kitchen",
@@ -461,7 +467,11 @@
       "footer.social.facebook": "Facebook (Coming Soon)",
       "footer.social.twitter": "Twitter (Coming Soon)",
       "footer.social.instagram": "Instagram (Coming Soon)",
-      "footer.social.linkedin": "LinkedIn (Coming Soon)"
+      "footer.social.linkedin": "LinkedIn (Coming Soon)",
+      "error404.title": "Page Not Found",
+      "error404.text": "The page you are looking for does not exist or has been moved. Please check the link or return to the homepage.",
+      "error404.backHome": "Back to Home",
+      "error404.contactSupport": "Contact Support"
     }
   };
   let LOADED = {};

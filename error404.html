@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>页面即将上线 | OmniPOSTech</title>
-  <meta name="robots" content="noindex" />
+  <title data-i18n="error404.title">页面未找到 | OmniPOSTech</title>
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#6b21a8',secondary:'#f3f4f6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,18 +18,15 @@
 </head>
 <body class="min-h-screen gradient-bg flex items-center justify-center text-white px-4">
   <div class="text-center max-w-xl animate-fade-in-up">
-    <img src="../img/logos/png/logo_no_bg2.png" alt="OmniPOSTech" class="h-20 mx-auto mb-8 object-contain" />
-    <h1 class="text-4xl font-bold mb-4" data-i18n="coming.title">页面即将上线</h1>
-    <p class="text-white/90 text-lg mb-8" data-i18n="coming.text">该功能或内容正在准备中，敬请期待。我们会很快更新此页面。</p>
+    <img src="img/logos/png/logo_no_bg2.png" alt="OmniPOSTech" class="h-20 mx-auto mb-8 object-contain" />
+    <h1 class="text-5xl font-bold mb-4" data-i18n="error404.title">404 页面未找到</h1>
+    <p class="text-white/90 text-lg mb-8" data-i18n="error404.text">您访问的页面不存在或已被移动。请检查链接或返回首页。</p>
     <div class="flex flex-wrap gap-4 justify-center">
-      <a href="../index.html" class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors" data-i18n="coming.backHome">返回首页</a>
-      <a href="mailto:support@omnipostech.com" class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors" data-i18n="coming.contactSupport">联系支持</a>
+      <a href="index.html" class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors" data-i18n="error404.backHome">返回首页</a>
+      <a href="mailto:support@omnipostech.com" class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors" data-i18n="error404.contactSupport">联系支持</a>
     </div>
-    <!-- <div class="mt-10">
-      <button id="langBtn" class="bg-white/10 hover:bg-white/20 px-4 py-2 !rounded-button font-medium backdrop-blur-sm"></button>
-    </div> -->
   </div>
-  <script>
+    <script>
     document.addEventListener('DOMContentLoaded',()=>{
       if(window.I18N){
         window.I18N.init();
@@ -39,6 +35,6 @@
       }
     });
   </script>
-  <script src="../js/i18n.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
